@@ -31,14 +31,16 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"></noscript>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip" href="#map" data-i18n="doc.1">Skip to the route map</a>
 
   <header class="bar">
-    <a class="wordmark" href="#top" aria-label="Back to top" data-i18n="bar.1" data-i18n-aria="bar.8.aria"><span class="roundel" aria-hidden="true"></span>Murat Kaan Seçkin</a>
+    <a class="wordmark" href="#top" aria-label="Murat Kaan Seçkin — back to the top" data-i18n="bar.1" data-i18n-aria="bar.8.aria"><span class="roundel" aria-hidden="true"></span>Murat Kaan Seçkin</a>
     <nav class="lines" aria-label="Sections" data-i18n-aria="bar.9.aria">
       <a href="#bogazici" style="--c:var(--blue)" data-i18n="bar.2">University</a>
       <a href="#games" style="--c:var(--red)" data-i18n="bar.3">Games</a>
@@ -47,7 +49,7 @@
       <a href="#kunduz" style="--c:var(--blue)" data-i18n="bar.6">Kunduz</a>
       <a href="#work" style="--c:var(--ink)" data-i18n="bar.7">Work</a>
     </nav>
-    <button class="lang" type="button" aria-label="Switch language to Turkish" data-i18n-aria="js.langSwitch"><span aria-hidden="true">EN</span></button>
+    <button class="lang" type="button" aria-label="EN — switch language to Turkish" data-i18n-aria="js.langSwitch"><span aria-hidden="true">EN</span></button>
     <button class="theme" type="button" aria-label="Switch colour theme" data-i18n-aria="bar.10.aria"><span aria-hidden="true"></span></button>
   </header>
 
@@ -200,24 +202,24 @@
             <table class="rules">
               <caption data-i18n="games.33">Match rules from the design</caption>
               <tr><th data-i18n="games.34">3–4</th><td data-i18n="games.35">1 upgraded item</td></tr>
-              <tr><th data-i18n="games.36">5</th><td data-i18n="games.37">1 upgraded item + <img src="assets/ss-propeller.webp" alt="" class="ico" width="200" height="200"> Propeller</td></tr>
+              <tr><th data-i18n="games.36">5</th><td data-i18n="games.37">1 upgraded item + <img src="assets/ss-propeller.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Propeller</td></tr>
               <tr><th data-i18n="games.38">6–7</th><td data-i18n="games.39">2 upgraded items + Propeller</td></tr>
               <tr><th data-i18n="games.40">8</th><td data-i18n="games.41">2 upgraded items + 2 Propellers</td></tr>
-              <tr><th data-i18n="games.42">9–11</th><td data-i18n="games.43">Double-tier upgrade + <img src="assets/ss-bomb.webp" alt="" class="ico" width="200" height="200"> Bomb</td></tr>
-              <tr><th data-i18n="games.44">12+</th><td data-i18n="games.45">Double-tier upgrade + <img src="assets/ss-fireworks.webp" alt="" class="ico" width="200" height="200"> Fireworks</td></tr>
+              <tr><th data-i18n="games.42">9–11</th><td data-i18n="games.43">Double-tier upgrade + <img src="assets/ss-bomb.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Bomb</td></tr>
+              <tr><th data-i18n="games.44">12+</th><td data-i18n="games.45">Double-tier upgrade + <img src="assets/ss-fireworks.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Fireworks</td></tr>
             </table>
           </div>
           <div class="device">
             <div class="hud">
-              <div class="aim"><small data-i18n="games.46">Aim</small><img id="aimIco" src="assets/ss-moto.webp" alt="" width="200" height="200"><b id="aimTxt">×1</b></div>
-              <div class="rubis"><img src="assets/ss-rubis.webp" alt="Rubis the parrot" width="266" height="262" data-i18n-alt="games.67.alt"><p id="rubisSays" aria-live="polite">Route 1. Build me a motorcycle!</p></div>
+              <div class="aim"><small data-i18n="games.46">Aim</small><img id="aimIco" src="assets/ss-moto.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b id="aimTxt">×1</b></div>
+              <div class="rubis"><img src="assets/ss-rubis.webp" alt="Rubis the parrot" width="266" height="262" data-i18n-alt="games.67.alt" loading="lazy" decoding="async"><p id="rubisSays" aria-live="polite">Route 1. Build me a motorcycle!</p></div>
               <div class="moves"><small data-i18n="games.47">Moves</small><b id="movesTxt">8</b></div>
             </div>
             <div class="road" aria-hidden="true"><i id="roadFill"></i><span id="routeTxt">Route 1</span></div>
             <div class="board" id="board" role="group" aria-label="Solve Stop puzzle board. Use the arrow keys to move, Enter to tap a cell." data-i18n-aria="games.68.aria"></div>
             <div class="boosters">
-              <button type="button" id="shuffleBtn"><img src="assets/ss-steer.webp" alt="" width="200" height="200"><span data-i18n="games.48">Shuffle</span></button>
-              <button type="button" id="restartBtn"><img src="assets/ss-wheelboost.webp" alt="" width="200" height="200"><span data-i18n="games.49">Restart route</span></button>
+              <button type="button" id="shuffleBtn"><img src="assets/ss-steer.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><span data-i18n="games.48">Shuffle</span></button>
+              <button type="button" id="restartBtn"><img src="assets/ss-wheelboost.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><span data-i18n="games.49">Restart route</span></button>
             </div>
           </div>
         </div>
@@ -247,7 +249,7 @@
         </div>
 
         <div class="solve-meta">
-          <div><h4 data-i18n="games.59">Boosters</h4><p data-i18n="games.60"><img src="assets/ss-swap.webp" alt="" class="ico" width="200" height="200"> Swap two cells. <img src="assets/ss-steer.webp" alt="" class="ico" width="200" height="200"> Steering wheel shuffles the board. <img src="assets/ss-wheelboost.webp" alt="" class="ico" width="200" height="200"> Wheel upgrades a whole row or column.</p></div>
+          <div><h4 data-i18n="games.59">Boosters</h4><p data-i18n="games.60"><img src="assets/ss-swap.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Swap two cells. <img src="assets/ss-steer.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Steering wheel shuffles the board. <img src="assets/ss-wheelboost.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Wheel upgrades a whole row or column.</p></div>
           <div><h4 data-i18n="games.61">Economy</h4><p data-i18n="games.62">Tickets work as lives, five at most, one back every 30 minutes. Diamonds continue a failed route. Mini puzzles on routes 10 and 14 cost no ticket.</p></div>
           <div><h4 data-i18n="games.63">What I would add next</h4><p data-i18n="games.64">Replace regions with a real travel plan on an interactive map, and sell outfit variations through a pass. Familiar enough to learn in seconds, different enough to plan.</p></div>
         </div>
@@ -409,9 +411,9 @@
       </header>
       <p class="prose wide" data-i18n="abm.4">For the course I framed three modelling questions. In each one, the interesting result comes from many individuals reacting to each other, which is exactly where agent-based models beat averages.</p>
       <div class="abm">
-        <div><h4 data-i18n="abm.5">Instagram boycotts</h4><p data-i18n="abm.6">How do boycott stories and different levels of social sensitivity change purchasing and brand perception?</p><small data-i18n="abm.7">Agents: users, influencers, brands</small></div>
-        <div><h4 data-i18n="abm.8">Library breaks</h4><p data-i18n="abm.9">How do break policies change seat availability, movement and perceived fairness?</p><small data-i18n="abm.10">Agents: students, staff</small></div>
-        <div><h4 data-i18n="abm.11">After an earthquake</h4><p data-i18n="abm.12">In Rumelihisarüstü, how do behaviour types, crowds and slopes affect who reaches an assembly area, and how fast?</p><small data-i18n="abm.13">Agents: followers, independents, confused residents</small></div>
+        <div><h3 data-i18n="abm.5">Instagram boycotts</h3><p data-i18n="abm.6">How do boycott stories and different levels of social sensitivity change purchasing and brand perception?</p><small data-i18n="abm.7">Agents: users, influencers, brands</small></div>
+        <div><h3 data-i18n="abm.8">Library breaks</h3><p data-i18n="abm.9">How do break policies change seat availability, movement and perceived fairness?</p><small data-i18n="abm.10">Agents: students, staff</small></div>
+        <div><h3 data-i18n="abm.11">After an earthquake</h3><p data-i18n="abm.12">In Rumelihisarüstü, how do behaviour types, crowds and slopes affect who reaches an assembly area, and how fast?</p><small data-i18n="abm.13">Agents: followers, independents, confused residents</small></div>
       </div>
     </section>
 

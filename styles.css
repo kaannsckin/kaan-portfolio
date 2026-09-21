@@ -270,7 +270,7 @@ input[type=range]{accent-color:var(--violet);width:100%}
 /* abm */
 .abm{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .abm div{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;display:flex;flex-direction:column}
-.abm h4{font-size:22px;margin-bottom:8px}
+.abm h3{font-size:22px;margin-bottom:8px}
 .abm p{font-size:16px;flex:1}
 .abm small{font-size:13px;color:var(--muted)}
 
