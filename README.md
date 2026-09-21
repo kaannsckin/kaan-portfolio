@@ -9,9 +9,7 @@ https://kaan-portfolio.perky-gem-7263.chatgpt.site/
 - `index.html` — portfolio content and structure
 - `styles.css` — responsive visual system
 - `script.js` — lightweight scroll reveal behavior
-- `assets/profile.png` — pixel-art profile portrait
-- `assets/solve-stop-home.png` — Solve Stop game concept visual
-- `assets/Murat-Kaan-Seckin-Resume.pdf` — downloadable CV
+- Portfolio images and CV currently use the published ChatGPT Sites asset URLs.
 
 ## Run locally
 
