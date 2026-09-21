@@ -48,9 +48,36 @@
     const img = e.target.closest('[data-zoom]');
     if (!img || !dlg.showModal) return;
     zimg.src = img.currentSrc || img.src; zimg.alt = img.alt;
+    zoomOpener = img;
     dlg.showModal();
   });
   dlg.addEventListener('click', e => { if (e.target === dlg || e.target.closest('.zoom-x')) dlg.close(); });
+  // Zoomable images are reachable and operable from the keyboard.
+  $$('[data-zoom]').forEach(img => {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-haspopup', 'dialog');
+    if (img.alt) img.setAttribute('aria-label', img.alt + ' — enlarge');
+    img.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); img.click(); }
+    });
+  });
+  // Send focus back to the thumbnail that opened the dialog.
+  let zoomOpener = null;
+  dlg.addEventListener('close', () => { if (zoomOpener) { zoomOpener.focus(); zoomOpener = null; } });
+
+  /* ---------- play the walkthrough only while it is on screen ---------- */
+  const vid = $('.screens video');
+  if (vid) {
+    if (reduced || !('IntersectionObserver' in window)) {
+      vid.controls = true;
+    } else {
+      new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) vid.play().catch(() => { vid.controls = true; });
+        else vid.pause();
+      }), { threshold: 0.35 }).observe(vid);
+    }
+  }
 
   /* ---------- Kunduz pricing simulator ---------- */
   const E = 0.912, MU = 4;
@@ -134,21 +161,44 @@
   const hasMove = () => b.some((_, i) => group(i).length >= 3);
 
   const cells = [];
+  let focused = 0;
+  const clearHl = () => cells.forEach(c => c.classList.remove('hl'));
+  const showHl = i => { if (busy) return; const g = group(i); if (g.length >= 3) g.forEach(c => cells[c].classList.add('hl')); };
+  // Only the active cell is tabbable, so the board is a single tab stop.
+  const focusCell = i => {
+    focused = i;
+    cells.forEach((c, n) => c.tabIndex = n === i ? 0 : -1);
+    cells[i].focus();
+  };
   for (let i = 0; i < N * N; i++) {
     const btn = document.createElement('button');
-    btn.type = 'button'; btn.className = 'cell'; btn.setAttribute('role', 'gridcell');
+    btn.type = 'button'; btn.className = 'cell'; btn.tabIndex = i === 0 ? 0 : -1;
     const img = document.createElement('img'); img.alt = ''; img.draggable = false;
     btn.append(img);
     btn.addEventListener('click', () => tap(i));
-    btn.addEventListener('pointerenter', () => { if (busy) return; const g = group(i); if (g.length >= 3) g.forEach(c => cells[c].classList.add('hl')); });
-    btn.addEventListener('pointerleave', () => cells.forEach(c => c.classList.remove('hl')));
+    btn.addEventListener('pointerenter', () => showHl(i));
+    btn.addEventListener('pointerleave', clearHl);
+    btn.addEventListener('focus', () => { focused = i; showHl(i); });
+    btn.addEventListener('blur', clearHl);
+    btn.addEventListener('keydown', e => {
+      const y = Math.floor(i / N), x = i % N;
+      const step = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0] }[e.key];
+      if (step) {
+        const nx = Math.min(N - 1, Math.max(0, x + step[0]));
+        const ny = Math.min(N - 1, Math.max(0, y + step[1]));
+        e.preventDefault(); focusCell(ny * N + nx); return;
+      }
+      if (e.key === 'Home') { e.preventDefault(); focusCell(y * N); }
+      else if (e.key === 'End') { e.preventDefault(); focusCell(y * N + N - 1); }
+    });
     boardEl.append(btn); cells.push(btn);
   }
   function paint(anim = {}) {
     b.forEach((t, i) => {
       const c = cells[i];
       c.querySelector('img').src = ICON[TIERS[t]];
-      c.setAttribute('aria-label', NAMES[t]); c.dataset.t = t;
+      c.setAttribute('aria-label', `Row ${Math.floor(i / N) + 1}, column ${i % N + 1}: ${NAMES[t]}`);
+      c.dataset.t = t;
       c.classList.remove('pop', 'up', 'boost', 'hl');
       if (anim[i]) { void c.offsetWidth; c.classList.add(anim[i]); }
     });
@@ -202,7 +252,7 @@
     if (busy || over) return;
     let tries = 0;
     do { for (let i = b.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } } while (!hasMove() && ++tries < 30);
-    if (!hasMove()) b[Math.floor(Math.random() * 20)] = 0;
+    if (!hasMove()) b[Math.floor(Math.random() * N * N)] = 0;
     const a = {}; b.forEach((_, i) => a[i] = 'pop'); paint(reduced ? {} : a);
     say(auto ? 'No matches left, so the steering wheel shuffled the board.' : 'Steering wheel! Board shuffled.');
   }
