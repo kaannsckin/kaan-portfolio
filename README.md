@@ -1,26 +1,28 @@
 # Murat Kaan Seçkin — Portfolio
 
-Source-controlled static version of the portfolio published at:
+A static portfolio designed as a transit map: every project is a stop, and each career line has its own colour.
 
-https://kaan-portfolio.perky-gem-7263.chatgpt.site/
+## What is inside
 
-## Contents
-
-- `index.html` — portfolio content and structure
-- `styles.css` — responsive visual system
-- `script.js` — lightweight scroll reveal behavior
-- Portfolio images and CV currently use the published ChatGPT Sites asset URLs.
+- `index.html` — content and structure
+- `styles.css` — visual system, light and dark themes
+- `script.js` — route map animation, section navigation, image zoom, and four interactive pieces:
+  - **Solve Stop prototype** — the tap-to-upgrade mechanic from the game design case, playable on a 5×5 board
+  - **Kunduz pricing model** — Erlang B + price elasticity (e = 0.912) optimiser running live in the browser
+  - **TikiTrivia "Kariyer İzi"** — a one-question career path puzzle
+  - **Lee** — a step slider that grows the companion
+- `assets/` — optimised visuals from the original project decks, designs and the CV
 
 ## Run locally
 
-No build step is required. Open `index.html` directly or serve the folder with any static server.
+No build step.
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Open `http://localhost:8000`.
 
-## Deployment
+## Deploy
 
-The project can be hosted directly with GitHub Pages, Vercel, Netlify, Cloudflare Pages, or any static web host.
+Works as-is on GitHub Pages (Settings → Pages → deploy from `main`), Vercel, Netlify or Cloudflare Pages.
