@@ -43,6 +43,8 @@ sub,sup{font-size:.68em;line-height:0}
 .lines a.on{color:var(--ink);background:var(--soft)}
 .lines a.on::before{background:var(--c)}
 .theme{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--rule);background:var(--card);cursor:pointer;display:grid;place-items:center}
+.lang{flex:none;height:38px;min-width:44px;padding:0 12px;border-radius:99px;border:1px solid var(--rule);background:var(--card);color:var(--ink);cursor:pointer;font:600 13px var(--sans);letter-spacing:.02em}
+.lang:hover,.theme:hover{border-color:var(--muted)}
 .theme span{width:16px;height:16px;border-radius:50%;background:linear-gradient(90deg,var(--ink) 50%,transparent 50%);border:2px solid var(--ink)}
 
 /* ---------- hero ---------- */
