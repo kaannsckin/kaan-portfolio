@@ -102,6 +102,7 @@ h1{font-size:clamp(58px,10.5vw,150px);line-height:.9;letter-spacing:-.045em;font
 figure{margin:0}
 figcaption{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.45}
 [data-zoom]{cursor:zoom-in}
+.fig-tag{display:inline-block;margin-bottom:6px;padding:3px 10px;border-radius:99px;background:var(--soft);color:var(--ink);font-size:13px;font-weight:500}
 .note{font-size:14px;color:var(--muted)}
 .tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:14px 0 0}
 .tags li{font-size:13px;font-weight:500;padding:4px 10px;border-radius:99px;background:var(--soft);color:var(--ink)}
