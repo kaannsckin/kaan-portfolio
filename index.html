@@ -2,344 +2,650 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Murat Kaan Seçkin — Industrial Engineer, Project Manager and Product Builder." />
-  <meta name="theme-color" content="#0b0c0f" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Murat Kaan Seçkin — Industrial Engineer, Project Manager and Product Builder. Forecasting, optimization, game design and products built along the way." />
+  <meta name="theme-color" content="#F3F5F8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0F131B" media="(prefers-color-scheme: dark)" />
   <title>Murat Kaan Seçkin | Project Manager & Product Builder</title>
+  <link rel="canonical" href="https://kaannsckin.github.io/kaan-portfolio/" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/og.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Murat Kaan Seçkin" />
+  <meta property="og:title" content="Murat Kaan Seçkin — Project Manager & Product Builder" />
+  <meta property="og:description" content="A career drawn as a transit map: every project is a stop. Forecasting, optimization, game design and products built along the way." />
+  <meta property="og:url" content="https://kaannsckin.github.io/kaan-portfolio/" />
+  <meta property="og:image" content="https://kaannsckin.github.io/kaan-portfolio/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Murat Kaan Seçkin, industrial engineer, project manager and product builder, over a five-line transit map of his career." />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:locale:alternate" content="tr_TR" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Murat Kaan Seçkin — Project Manager & Product Builder" />
+  <meta name="twitter:description" content="A career drawn as a transit map: every project is a stop." />
+  <meta name="twitter:image" content="https://kaannsckin.github.io/kaan-portfolio/assets/og.png" />
+  <meta name="twitter:image:alt" content="Murat Kaan Seçkin over a five-line transit map of his career." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"></noscript>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip" href="#story">Skip to story</a>
-  <header class="site-header">
-    <a class="mark" href="#top" aria-label="Back to top">MK</a>
-    <nav aria-label="Primary navigation">
-      <a href="#story">Story</a>
-      <a href="#university">University</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
+  <a class="skip" href="#map" data-i18n="doc.1">Skip to the route map</a>
+
+  <header class="bar">
+    <a class="wordmark" href="#top" aria-label="Murat Kaan Seçkin — back to the top" data-i18n="bar.1" data-i18n-aria="bar.8.aria"><span class="roundel" aria-hidden="true"></span>Murat Kaan Seçkin</a>
+    <nav class="lines" aria-label="Sections" data-i18n-aria="bar.9.aria">
+      <a href="#bogazici" style="--c:var(--blue)" data-i18n="bar.2">University</a>
+      <a href="#games" style="--c:var(--red)" data-i18n="bar.3">Games</a>
+      <a href="#starbucks" style="--c:var(--green)" data-i18n="bar.4">Operations</a>
+      <a href="#labs" style="--c:var(--violet)" data-i18n="bar.5">Products</a>
+      <a href="#kunduz" style="--c:var(--blue)" data-i18n="bar.6">Kunduz</a>
+      <a href="#work" style="--c:var(--ink)" data-i18n="bar.7">Work</a>
     </nav>
-    <a class="ghost-link" href="https://github.com/kaannsckin" target="_blank" rel="noreferrer">GitHub ↗</a>
+    <button class="lang" type="button" aria-label="EN — switch language to Turkish" data-i18n-aria="js.langSwitch"><span aria-hidden="true">EN</span></button>
+    <button class="theme" type="button" aria-label="Switch colour theme" data-i18n-aria="bar.10.aria"><span aria-hidden="true"></span></button>
   </header>
 
   <main id="top">
-    <section class="hero section-pad">
-      <div class="hero-copy reveal">
-        <div class="eyebrow">Istanbul · Available for good problems</div>
-        <h1>Murat Kaan<br><span>Seçkin.</span></h1>
-        <p class="lead">Industrial Engineer · Project Manager · Product Builder</p>
-        <p class="hero-body">I turn messy real world problems into useful systems: forecasting models, secure enterprise delivery, product concepts and tools I build after hours.</p>
-        <div class="cta-row">
-          <a class="button primary" href="#story">Follow the story ↓</a>
-          <a class="button" href="https://kaan-portfolio.perky-gem-7263.chatgpt.site/Murat-Kaan-Seckin-Resume.pdf" target="_blank" rel="noreferrer">Download CV</a>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-head">
+        <p class="hello" data-i18n="doc.2">Industrial engineer, project manager, and someone who builds things after hours.</p>
+        <h1 data-i18n="doc.3">Murat Kaan<br>Seçkin</h1>
+        <div class="sign" aria-hidden="true"><span data-i18n="doc.4">Next stop</span><b data-i18n="doc.5">good problems</b></div>
+      </div>
+
+      <div class="map-wrap" id="map">
+        <p class="map-hint" data-i18n="doc.6">Every project on this page is a stop. Tap one to jump there. On a phone, swipe along the line.</p>
+        <div class="map-scroll">
+          <svg class="map" viewBox="0 0 1200 380" role="img" aria-labelledby="mapTitle">
+            <title id="mapTitle" data-i18n="doc.7">Career route map from Boğaziçi University in 2019 to project management at TÜBİTAK BİLGEM in 2026</title>
+            <!-- lines -->
+            <path class="ln ln-green" d="M300 70 H780 L900 190" />
+            <path class="ln ln-red" d="M170 190 L280 300 H470" />
+            <path class="ln ln-violet" d="M500 190 L610 300 H900 L1010 190" />
+            <path class="ln ln-blue" d="M70 190 H900" />
+            <path class="ln ln-ink" d="M900 190 H1130" />
+            <!-- stations -->
+            <g class="st" data-go="#bogazici"><circle cx="70" cy="190" r="13" class="term"/><text x="70" y="160" class="lbl" text-anchor="middle" data-i18n="doc.8">Boğaziçi IE</text><text x="70" y="226" class="yr" text-anchor="middle" data-i18n="doc.9">2019</text></g>
+            <g class="st" data-go="#teb"><circle cx="260" cy="190" r="8"/><text x="260" y="164" class="lbl" text-anchor="middle" data-i18n="doc.10">TEB İcat Çıkar</text><text x="260" y="226" class="yr" text-anchor="middle" data-i18n="doc.11">3rd place</text></g>
+            <g class="st" data-go="#abm"><circle cx="420" cy="190" r="8"/><text x="420" y="164" class="lbl" text-anchor="middle" data-i18n="doc.12">Agent-based models</text></g>
+            <g class="st" data-go="#kunduz"><circle cx="720" cy="190" r="11"/><text x="720" y="164" class="lbl" text-anchor="middle" data-i18n="doc.13">Kunduz · AA</text><text x="720" y="226" class="yr" text-anchor="middle" data-i18n="doc.14">2025</text></g>
+            <g class="st ichg" data-go="#work"><rect x="884" y="174" width="32" height="32" rx="16"/><text x="888" y="234" class="lbl" text-anchor="end" data-i18n="doc.15">TÜBİTAK BİLGEM</text><text x="888" y="252" class="yr" text-anchor="end" data-i18n="doc.16">Aug 2025</text></g>
+            <g class="st" data-go="#work"><circle cx="1010" cy="190" r="8"/><text x="1010" y="164" class="lbl" text-anchor="middle" data-i18n="doc.17">Project Manager</text><text x="1010" y="226" class="yr" text-anchor="middle" data-i18n="doc.18">2026</text></g>
+            <g class="st now" data-go="#contact"><circle cx="1130" cy="190" r="15" class="term"/><circle cx="1130" cy="190" r="15" class="pulse"/><text x="1130" y="232" class="lbl" text-anchor="middle" data-i18n="doc.19">You are here</text></g>
+
+            <g class="st" data-go="#bogazici"><circle cx="330" cy="70" r="8"/><text x="330" y="44" class="lbl" text-anchor="middle" data-i18n="doc.20">Kuveyt Türk</text><text x="330" y="100" class="yr" text-anchor="middle" data-i18n="doc.21">2022</text></g>
+            <g class="st" data-go="#bogazici"><circle cx="440" cy="70" r="8"/><text x="440" y="44" class="lbl" text-anchor="middle" data-i18n="doc.22">Ohio, USA</text><text x="440" y="100" class="yr" text-anchor="middle" data-i18n="doc.23">2023</text></g>
+            <g class="st" data-go="#bogazici"><circle cx="550" cy="70" r="8"/><text x="550" y="44" class="lbl" text-anchor="middle" data-i18n="doc.24">IBTech</text><text x="550" y="100" class="yr" text-anchor="middle" data-i18n="doc.25">2024</text></g>
+            <g class="st" data-go="#starbucks"><circle cx="660" cy="70" r="10"/><text x="660" y="44" class="lbl" text-anchor="middle" data-i18n="doc.26">Starbucks</text><text x="660" y="100" class="yr" text-anchor="middle" data-i18n="doc.27">2024</text></g>
+            <g class="st" data-go="#borusan"><circle cx="770" cy="70" r="8"/><text x="770" y="44" class="lbl" text-anchor="middle" data-i18n="doc.28">Borusan Cat</text><text x="770" y="100" class="yr" text-anchor="middle" data-i18n="doc.29">2024–25</text></g>
+
+            <g class="st" data-go="#games"><circle cx="330" cy="300" r="8"/><text x="330" y="332" class="lbl" text-anchor="middle" data-i18n="doc.30">Game analysis</text></g>
+            <g class="st" data-go="#solvestop"><circle cx="470" cy="300" r="13" class="term"/><text x="470" y="336" class="lbl" text-anchor="middle" data-i18n="doc.31">Solve Stop</text></g>
+            <g class="st" data-go="#tapan"><circle cx="650" cy="300" r="10"/><text x="650" y="332" class="lbl" text-anchor="middle" data-i18n="doc.32">Tapan</text></g>
+            <g class="st" data-go="#lee"><circle cx="760" cy="300" r="10"/><text x="760" y="332" class="lbl" text-anchor="middle" data-i18n="doc.33">Lee</text></g>
+            <g class="st" data-go="#tiki"><circle cx="870" cy="300" r="10"/><text x="870" y="332" class="lbl" text-anchor="middle" data-i18n="doc.34">TikiTrivia</text></g>
+          </svg>
         </div>
+        <ul class="legend">
+          <li style="--c:var(--blue)" data-i18n="doc.35">Boğaziçi line</li>
+          <li style="--c:var(--green)" data-i18n="doc.36">Operations line</li>
+          <li style="--c:var(--red)" data-i18n="doc.37">Game line</li>
+          <li style="--c:var(--violet)" data-i18n="doc.38">Product line</li>
+          <li style="--c:var(--ink)" data-i18n="doc.39">Work line</li>
+        </ul>
       </div>
-      <div class="profile-card reveal" data-delay="1">
-        <div class="card-topline"><span>PROFILE_01</span><span>PM / IE</span></div>
-        <img src="https://kaan-portfolio.perky-gem-7263.chatgpt.site/murat-kaan-pixel.png" alt="Pixel art portrait of Murat Kaan Seçkin" />
-        <div class="profile-copy">
-          <strong>PM by day.<br>Side quests by night.</strong>
-          <code>&gt; ideas<br>&gt; systems<br>&gt; ship_</code>
-        </div>
-      </div>
-    </section>
 
-    <section id="story" class="section-pad intro-block reveal">
-      <div class="section-kicker">Portfolio 2026</div>
-      <div class="split-title">
-        <div class="eyebrow">The thread through the work</div>
-        <h2>I like the point where ambiguity becomes a system people can use.</h2>
-      </div>
-      <p class="large-copy">I manage complex delivery, translate uncertainty into plans and build practical products when an existing workflow leaves too much friction behind.</p>
-      <div class="chip-row">
-        <span>Project and Product Management</span>
-        <span>Decision Intelligence</span>
-        <span>Agentic Workflows</span>
-        <span>Enterprise Messaging</span>
-        <span>Optimization</span>
-        <span>Behavior Design</span>
-      </div>
-    </section>
-
-    <section id="university" class="chapter section-pad">
-      <div class="chapter-index reveal"><b>01</b><span>2019 to 2023</span></div>
-      <div class="chapter-grid">
-        <div class="sticky-heading reveal">
-          <div class="eyebrow">Foundations</div>
-          <h2>Learning to model the real world</h2>
-          <p>Industrial Engineering at Boğaziçi University gave me a practical language for uncertainty: optimization, simulation, queueing, forecasting and data analysis.</p>
-          <ul class="plain-list">
-            <li>Kuveyt Türk: process development, agile methods and process mining</li>
-            <li>Ohio, USA: four months in customer facing operational roles</li>
-            <li>IBTech: business analysis, SQL extraction and reporting</li>
-          </ul>
-        </div>
-
-        <div class="chapter-content">
-          <article class="story-card reveal">
-            <div class="eyebrow">University notebook · Boğaziçi</div>
-            <h3>Cases became a way to test how I think.</h3>
-            <p>During university I kept moving between operating systems, product ideas and human behavior. The projects below were where forecasting, simulation and game design stopped being course topics and became things I wanted to build.</p>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="meta-row"><span>Graduation project</span><span>Grade AA</span></div>
-            <h3>Optimizing campaign management for resident tutors.</h3>
-            <p>For Kunduz, our team studied how to match fluctuating hourly follow up demand with tutor supply. The practical tension was clear: maintain a high fulfillment rate without letting campaign cost drift out of control.</p>
-            <div class="metric-grid">
-              <div><b>20M+</b><span>records analyzed</span></div>
-              <div><b>Forecast</b><span>XGBoost demand estimate</span></div>
-              <div><b>Queue</b><span>M/M/c/c fulfillment model</span></div>
-              <div><b>Optimize</b><span>Budget and service constraints</span></div>
-            </div>
-            <div class="three-up">
-              <div><small>01 / Forecast</small><h4>Demand before the rush</h4><p>The XGBoost model used recent hourly demand, rolling statistics, time features and special hour signals. On the test set it reached an R² of 0.8475, with MAE 11.05.</p></div>
-              <div><small>02 / Operations</small><h4>Supply as a queue</h4><p>An M/M/c/c model translated active tutor capacity into an expected fulfillment rate. This made the relationship between price, tutor participation and service level explicit.</p></div>
-              <div><small>03 / Decision</small><h4>A price for the next hour</h4><p>The optimization balanced campaign spend with the penalty of unmet demand while respecting budget, nonnegativity and target fulfillment constraints.</p></div>
-            </div>
-          </article>
-
-          <div class="two-cards">
-            <article class="mini-card reveal">
-              <div class="eyebrow">Agent based modelling</div>
-              <h3>Framing behavior as a system</h3>
-              <p>I explored how boycott messages spread through Instagram, how library break habits affect seat fairness and how residents move toward safe zones after an earthquake.</p>
-            </article>
-            <article class="mini-card reveal">
-              <div class="eyebrow">TEB İcat Çıkar · 3rd place</div>
-              <h3>STARS student network</h3>
-              <p>I designed a student ambassador program connecting TEB with university communities through campus events, training, competitions, mentoring and social experiences.</p>
-            </article>
-          </div>
-
-          <article class="game-card reveal">
-            <div class="game-copy">
-              <div class="eyebrow">Game design case · University years</div>
-              <h3>Analysis was the entry point. Solve Stop was the outcome.</h3>
-              <p>My interest in the game industry led me to work through several cases during university. For this one, I played and analyzed the first 50 levels of Royal Match and Toon Blast, looking at mechanics, difficulty curves, level design, power ups, interface and retention systems. Then I used those observations to design my own tap to blast game.</p>
-              <blockquote><b>The original mechanic</b> Matched items do not simply disappear. They upgrade into higher tier tools, then into vehicles. The cell a player taps matters, so a familiar action creates a more strategic board.</blockquote>
-              <div class="metric-grid compact">
-                <div><b>15</b><span>routes per region</span></div>
-                <div><b>3</b><span>launch regions</span></div>
-                <div><b>1</b><span>parrot guide, Rubis</span></div>
-              </div>
-            </div>
-            <figure>
-              <img src="https://kaan-portfolio.perky-gem-7263.chatgpt.site/solve-stop-home.png" alt="Solve Stop home screen concept with a hitchhiker and parrot beside Route 10" />
-              <figcaption>Original concept · Solve Stop</figcaption>
-            </figure>
-          </article>
-
-          <div class="four-up reveal">
-            <div><small>World</small><h4>A hitchhiking journey</h4><p>Players progress through Pathway, Ice World and Sahara, building the vehicles and equipment needed for each route.</p></div>
-            <div><small>Companion</small><h4>Rubis makes the rules human</h4><p>The parrot introduces mechanics, reacts to progress, offers hints and becomes part of later collection objectives.</p></div>
-            <div><small>Progression</small><h4>New region, new constraint</h4><p>Stone pieces, layered ice, sand covered items and timed sandstorms change how the same core mechanic must be played.</p></div>
-            <div><small>Depth</small><h4>Familiar, then different</h4><p>Power ups, boosters, character gear and evolving backgrounds support accessibility while the upgrade system adds strategic depth.</p></div>
-          </div>
-
-          <article class="labs reveal">
-            <div class="eyebrow">University born product labs</div>
-            <h3>Two early ideas I kept making more real.</h3>
-            <p>Lee and Tapan both began as attempts during my university years to turn a behavior or operational problem into a product. I later expanded the ideas into structured product concepts, technical plans and longer roadmaps.</p>
-            <div class="lab-grid">
-              <div class="lab-panel">
-                <div class="mock-status"><span>Today</span><b>7,482</b><span>active steps</span><i>72%</i></div>
-                <small>iOS · Health · Behavior</small>
-                <h3>Lee</h3>
-                <p>A virtual sports companion fed by real activity. Apple HealthKit data turns steps, running, strength work and recovery into care, energy and evolution for a character the user can form an emotional bond with.</p>
-                <p><b>Product loop</b><br>Move in real life, earn care resources, grow Lee and return because the relationship feels personal.</p>
-                <div class="tag-row"><span>Swift</span><span>HealthKit</span><span>Supabase</span><span>AI layer</span></div>
-              </div>
-              <div class="lab-panel">
-                <div class="farm-box"><small>My farm</small><b>Good morning.</b><span>Your fields need attention.</span></div>
-                <small>Agriculture · Community · AI</small>
-                <h3>Tapan</h3>
-                <p>A farmer focused digital ecosystem combining a social knowledge network, agricultural news, an explainable farm assistant and a direct marketplace.</p>
-                <p><b>Four connected pillars</b><br>Blog, News, My Farm and Market create a continuous path from shared knowledge to field decisions and direct trade.</p>
-                <div class="tag-row"><span>React Native</span><span>NestJS</span><span>PostGIS</span><span>Offline first</span></div>
-              </div>
-            </div>
-          </article>
+      <div class="hero-foot">
+        <p data-i18n="doc.40">I like the moment when an ambiguous problem becomes a system people can use. Sometimes that system is a forecasting model. Sometimes it is a delivery plan for secure software. Sometimes it is a parrot that explains a puzzle game.</p>
+        <div class="cta">
+          <a class="btn solid" href="#kunduz" data-i18n="doc.41">See the graduation project</a>
+          <a class="btn" href="assets/Murat-Kaan-Seckin-Resume.pdf" target="_blank" rel="noreferrer" data-i18n="doc.42">Download CV</a>
         </div>
       </div>
     </section>
 
-    <section class="chapter section-pad">
-      <div class="chapter-index reveal"><b>02</b><span>2024</span></div>
-      <div class="chapter-grid">
-        <div class="sticky-heading reveal">
-          <div class="eyebrow">From analysis to action</div>
-          <h2>Two Starbucks cases, one operating system</h2>
-          <p>I worked on both sides of the service experience: planning what should be brewed and designing what customers could experience while they waited.</p>
+    <!-- ============ STOP 01 BOĞAZİÇİ ============ -->
+    <section class="stop" id="bogazici" style="--c:var(--blue)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="bogazici.1">Stop 01</span>
+        <h2 data-i18n="bogazici.2">Learning to model the real world</h2>
+        <p class="stop-years" data-i18n="bogazici.3">Boğaziçi University · Industrial Engineering · 2019–2025</p>
+      </header>
+      <div class="intro-grid">
+        <div class="portrait">
+          <img src="assets/kaan.webp" alt="Portrait of Murat Kaan Seçkin" width="382" height="317" loading="lazy" data-i18n-alt="bogazici.15.alt">
         </div>
-        <div class="chapter-content">
-          <article class="starbucks-card reveal">
-            <div class="section-kicker">Stars for Starbucks · Two projects</div>
-            <h3>One forecast for operations.<br>One game for the wait.</h3>
-            <div class="star-grid">
-              <div>
-                <small>Project 01 / Filter coffee</small>
-                <h4>Forecast, then brew deliberately.</h4>
-                <p>The model translated store level demand into a brewing schedule for two urns, accounting for quarter, half and full batches and a one hour product life.</p>
-                <ul class="plus-list">
-                  <li>Historical demand forecast with special day adjustment</li>
-                  <li>Past, current and next hour machine schedule</li>
-                  <li>Live demand and inventory dashboard concept</li>
-                  <li>Designed to reduce waste and support margin</li>
-                </ul>
-              </div>
-              <div>
-                <small>Project 02 / Queue experience</small>
-                <h4>Make the waiting time useful.</h4>
-                <p>Stars Game of the Day invited mobile order customers to play a short daily game while their drink was prepared, turning idle waiting into a light reward loop.</p>
-                <ul class="plus-list">
-                  <li>Daily game inside the mobile order journey</li>
-                  <li>Stars as a participation reward</li>
-                  <li>Reward economics tested against customer frequency</li>
-                  <li>Goal: stronger waiting satisfaction and app use</li>
-                </ul>
-              </div>
-            </div>
-          </article>
+        <div class="prose">
+          <p class="lede" data-i18n="bogazici.4">I entered Boğaziçi ranked 630th in Türkiye's national entrance exam. Industrial engineering gave me a practical language for uncertainty: optimization, simulation, queueing, forecasting and data analysis.</p>
+          <p data-i18n="bogazici.5">I never kept those subjects inside the classroom. Internships, case competitions and side projects became the place where I tested them against real operations and real people.</p>
         </div>
+        <ol class="timeline">
+          <li><time data-i18n="bogazici.6">Aug 2022 – Mar 2023</time><b data-i18n="bogazici.7">Kuveyt Türk</b><span data-i18n="bogazici.8">Process development projects. First contact with project management, agile methods and process mining.</span></li>
+          <li><time data-i18n="bogazici.9">Jun – Oct 2023</time><b data-i18n="bogazici.10">Work and Travel, Ohio</b><span data-i18n="bogazici.11">Four months in hands-on operational roles. Customer-facing English, every day.</span></li>
+          <li><time data-i18n="bogazici.12">Mar – Jul 2024</time><b data-i18n="bogazici.13">IBTech</b><span data-i18n="bogazici.14">Business analysis projects, SQL extraction and reporting.</span></li>
+        </ol>
       </div>
     </section>
 
-    <section class="chapter section-pad">
-      <div class="chapter-index reveal"><b>03</b><span>2024 to 2025</span></div>
-      <div class="chapter-grid">
-        <div class="sticky-heading reveal">
-          <div class="eyebrow">System view</div>
-          <h2>Seeing risk across the whole operation</h2>
-          <p>At Borusan Cat, I monitored business units across five countries and supported process improvement with internal control and risk analyses.</p>
-        </div>
-        <div class="chapter-content">
-          <div class="metric-grid reveal">
-            <div><b>5</b><span>country operating context</span></div>
-            <div><b>Risk</b><span>analysis and internal controls</span></div>
-            <div><b>Portfolio</b><span>operational detail connected to decisions</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ============ STOP 02 GAMES ============ -->
+    <section class="stop" id="games" style="--c:var(--red)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="games.1">Stop 02</span>
+        <h2 data-i18n="games.2">From playing 100 levels to designing my own game</h2>
+        <p class="stop-years" data-i18n="games.3">Game design case · University years</p>
+      </header>
 
-    <section id="work" class="work-section section-pad">
-      <div class="reveal">
-        <div class="eyebrow">2025 to now · Professional chapter</div>
-        <h2>Shipping in complex environments.</h2>
+      <div class="prose wide">
+        <p class="lede" data-i18n="games.4">My interest in the game industry pulled me into several case studies during university. One of them was about tap-to-blast design and game analysis, prepared for a mobile games studio.</p>
+        <p data-i18n="games.5">I played Royal Match and Toon Blast up to level 50 each and took notes on everything: mechanics, level design, difficulty curves, power-ups and their combinations, obstacles, UI, animation and social features. I also asked players who had reached advanced levels what kept them coming back.</p>
       </div>
 
-      <article class="work-card reveal">
+      <div class="compare">
         <div>
-          <div class="eyebrow">Shareable view</div>
-          <h3>TÜBİTAK BİLGEM</h3>
-          <p class="role">Researcher / Project Manager</p>
-          <p>Project management for a national secure enterprise messaging solution, while supporting project management activities for national defense messaging projects.</p>
-          <div class="badge-line"><span>NATO TIDE Sprint</span><span>Istanbul · May 2026</span></div>
+          <h3 data-i18n="games.6">Royal Match</h3>
+          <ul>
+            <li data-i18n="games.7">Swipe to match, with a castle story that gives stars a purpose.</li>
+            <li data-i18n="games.8">New obstacles arrive gradually: boxes at level 6, cupboards at 11, potion bottles at 41.</li>
+            <li data-i18n="games.9">Difficulty ramps around level 20. Bonus goals and stars invite replay.</li>
+            <li data-i18n="games.10">On failure, the game hides the remaining goals before offering extra moves. That makes players hesitate before spending.</li>
+          </ul>
         </div>
-        <ol class="responsibility-grid">
-          <li><b>01</b>Scope and work breakdown</li>
-          <li><b>02</b>Schedule, budget and resources</li>
-          <li><b>03</b>Risks and dependencies</li>
-          <li><b>04</b>Requirements and priorities</li>
-          <li><b>05</b>Sprint and release planning</li>
-          <li><b>06</b>Test to production handover</li>
-        </ol>
-      </article>
-
-      <div class="sidequest-head reveal">
-        <div class="eyebrow">Selected side quests</div>
-        <h2>After hours, the workbench stays open.</h2>
-        <p>GitHub is my garage, not my showroom. Some repositories solve recurring work problems. Others begin with a simple question: what if we built this?</p>
+        <div>
+          <h3 data-i18n="games.11">Toon Blast</h3>
+          <ul>
+            <li data-i18n="games.12">Tap groups of two or more. Very accessible and fast.</li>
+            <li data-i18n="games.13">Rescue missions and decoration mode add side loops.</li>
+            <li data-i18n="games.14">Simple layouts and rare difficulty spikes. Good for casual play, repetitive for experienced players.</li>
+            <li data-i18n="games.15">No star rating or secondary goals, so there is little reason to replay a level.</li>
+          </ul>
+        </div>
+        <p class="compare-note" data-i18n="games.16">The gap I saw: tap-to-blast is easy to learn, but the tap itself carries almost no strategy. That became the design question.</p>
       </div>
 
-      <div class="sidequest-grid">
-        <article class="sidequest reveal">
-          <div class="eyebrow">Side quest / 01</div>
-          <h3>PlanAsistan</h3>
-          <p>A project, program and portfolio workspace built around real planning pain.</p>
-          <ul class="plus-list">
-            <li>Fuzzy PERT and capacity aware scheduling</li>
-            <li>Multi project portfolio and RAG health</li>
-            <li>Resource allocation: plan versus actual</li>
-            <li>RBAC, baselines, risk and what if scenarios</li>
-          </ul>
-          <div class="tag-row"><span>React 19</span><span>TypeScript</span><span>Supabase</span><span>Jira / Excel</span></div>
-          <a class="text-link" href="https://github.com/kaannsckin/pmasistance_mks" target="_blank" rel="noreferrer">View repository ↗</a>
-          <div class="portfolio-widget">
-            <div><small>Projects</small><b>08</b></div>
-            <div><small>On track</small><b>06</b></div>
-            <div><small>Capacity</small><b>84%</b></div>
+      <article class="solve" id="solvestop">
+        <div class="solve-hero">
+          <img src="assets/ss-hero.webp" alt="Solve Stop key art: a hitchhiker holding a Solve Stop sign with Rubis the parrot on his shoulder" loading="lazy" data-zoom width="900" height="900" data-i18n-alt="games.65.alt">
+          <div class="solve-copy">
+            <p class="kicker" data-i18n="games.17">My game concept</p>
+            <h3 data-i18n="games.18">Solve Stop</h3>
+            <p data-i18n="games.19">A hitchhiker travels across very different regions. To move on, he solves puzzles that build the tools and vehicles he needs for the next route. Rubis, a cheerful parrot, guides him and the player.</p>
+            <p data-i18n="games.20"><b>The twist:</b> matched items do not disappear. They upgrade. Screws become gears, gears become motors, motors become vehicles. The upgraded item appears in the cell you tapped, so where you tap matters.</p>
           </div>
-        </article>
-
-        <article class="sidequest reveal">
-          <div class="eyebrow">Side quest / 02</div>
-          <h3>Mail Test Automation</h3>
-          <p>Repeatable evidence for complex SMTP and IMAP delivery tests.</p>
-          <ul class="plus-list">
-            <li>Scenario based sending and MIME analysis</li>
-            <li>2FA and TOTP authentication flows</li>
-            <li>Live logs with HTML and CSV reporting</li>
-            <li>LLM assisted finding analysis</li>
-          </ul>
-          <div class="tag-row"><span>Python</span><span>Flask</span><span>SMTP / IMAP</span><span>LLM</span></div>
-          <a class="text-link" href="https://github.com/kaannsckin/mail-test-otomasyon" target="_blank" rel="noreferrer">View repository ↗</a>
-          <pre class="terminal">$ run suite scenario all
-plain_text     PASS
-attachment     PASS
-inline_image   PASS
-
-confidence: 0.98 · trace saved</pre>
-        </article>
-      </div>
-
-      <article class="decision-card reveal">
-        <div class="eyebrow">Decision labs</div>
-        <h3>Learning under uncertainty.</h3>
-        <p>Industrial engineering keeps showing up in the side projects: how do we make a better decision when demand, behavior or the future itself is uncertain?</p>
-        <div class="decision-grid">
-          <div><b>Blackjack AI</b><span>DQN based reinforcement learning for risk aware decisions and budget allocation.</span></div>
-          <div><b>Production Planning</b><span>Python experiments in inventory, supply contracts and operational planning.</span></div>
-          <div><b>Product Experiments</b><span>Behavior loops, operational constraints and decision support translated into tangible concepts.</span></div>
         </div>
-        <div class="curve"><span>explore</span><i></i><span>learn</span><i></i><span>decide</span></div>
-      </article>
 
-      <section class="how reveal">
-        <div class="eyebrow">How I work</div>
-        <h2>Enough structure to move.<br>Enough curiosity to improve.</h2>
-        <ol>
-          <li><b>01</b><strong>Discover</strong><span>Find the real friction.</span></li>
-          <li><b>02</b><strong>Frame</strong><span>Turn ambiguity into choices.</span></li>
-          <li><b>03</b><strong>Plan</strong><span>Make constraints visible.</span></li>
-          <li><b>04</b><strong>Build</strong><span>Create the smallest useful system.</span></li>
-          <li><b>05</b><strong>Verify</strong><span>Test the whole story.</span></li>
-          <li><b>06</b><strong>Learn</strong><span>Feed evidence back into the plan.</span></li>
-        </ol>
-      </section>
+        <div class="chain" aria-label="Upgrade chain" data-i18n-aria="games.66.aria">
+          <figure><img src="assets/ss-screw.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.21">Screw</figcaption></figure>
+          <figure><img src="assets/ss-gear.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.22">Gear</figcaption></figure>
+          <figure><img src="assets/ss-motor.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.23">Motor</figcaption></figure>
+          <figure class="veh"><img src="assets/ss-moto.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.24">Motorcycle</figcaption></figure>
+          <figure class="veh"><img src="assets/ss-car.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.25">Car</figcaption></figure>
+          <figure class="veh"><img src="assets/ss-sport.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.26">Sports car</figcaption></figure>
+          <figure class="veh"><img src="assets/ss-plane.webp" alt="" loading="lazy" width="200" height="200"><figcaption data-i18n="games.27">Airplane</figcaption></figure>
+          <p class="chain-note"><span data-i18n="games.28">Tools</span><span data-i18n="games.29">Vehicles. Each one can travel further than the last, so a route's goal is a set of vehicles.</span></p>
+        </div>
+
+        <!-- PLAYABLE -->
+        <div class="play" id="play">
+          <div class="play-side">
+            <p class="kicker" data-i18n="games.30">Playable prototype</p>
+            <h3 data-i18n="games.31">Try the mechanic</h3>
+            <p data-i18n="games.32">Tap a group of three or more identical items. The upgrade lands where you tapped. Cleared cells refill in place instead of falling from above, exactly as in the design document.</p>
+            <table class="rules">
+              <caption data-i18n="games.33">Match rules from the design</caption>
+              <tr><th data-i18n="games.34">3–4</th><td data-i18n="games.35">1 upgraded item</td></tr>
+              <tr><th data-i18n="games.36">5</th><td data-i18n="games.37">1 upgraded item + <img src="assets/ss-propeller.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Propeller</td></tr>
+              <tr><th data-i18n="games.38">6–7</th><td data-i18n="games.39">2 upgraded items + Propeller</td></tr>
+              <tr><th data-i18n="games.40">8</th><td data-i18n="games.41">2 upgraded items + 2 Propellers</td></tr>
+              <tr><th data-i18n="games.42">9–11</th><td data-i18n="games.43">Double-tier upgrade + <img src="assets/ss-bomb.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Bomb</td></tr>
+              <tr><th data-i18n="games.44">12+</th><td data-i18n="games.45">Double-tier upgrade + <img src="assets/ss-fireworks.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Fireworks</td></tr>
+            </table>
+          </div>
+          <div class="device">
+            <div class="hud">
+              <div class="aim"><small data-i18n="games.46">Aim</small><img id="aimIco" src="assets/ss-moto.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><b id="aimTxt">×1</b></div>
+              <div class="rubis"><img src="assets/ss-rubis.webp" alt="Rubis the parrot" width="266" height="262" data-i18n-alt="games.67.alt" loading="lazy" decoding="async"><p id="rubisSays" aria-live="polite">Route 1. Build me a motorcycle!</p></div>
+              <div class="moves"><small data-i18n="games.47">Moves</small><b id="movesTxt">8</b></div>
+            </div>
+            <div class="road" aria-hidden="true"><i id="roadFill"></i><span id="routeTxt">Route 1</span></div>
+            <div class="board" id="board" role="group" aria-label="Solve Stop puzzle board. Use the arrow keys to move, Enter to tap a cell." data-i18n-aria="games.68.aria"></div>
+            <div class="boosters">
+              <button type="button" id="shuffleBtn"><img src="assets/ss-steer.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><span data-i18n="games.48">Shuffle</span></button>
+              <button type="button" id="restartBtn"><img src="assets/ss-wheelboost.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><span data-i18n="games.49">Restart route</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="regions">
+          <div class="region r1">
+            <img src="assets/ss-stone.webp" alt="" loading="lazy" width="104" height="104">
+            <h4 data-i18n="games.50">Pathway <small>routes 1–15</small></h4>
+            <p data-i18n="games.51">Grids grow from 3×3 to 6×6. Stone pieces appear during play, not only at the start. Gift boxes buy a backpack, hat, sneakers and sunglasses.</p>
+          </div>
+          <div class="region r2">
+            <img src="assets/ss-worm.webp" alt="" loading="lazy" width="88" height="78">
+            <h4 data-i18n="games.52">Ice World <small>routes 16–30</small></h4>
+            <p data-i18n="games.53">Ice blocks crack in three stages. Rubis now asks for worms, a secondary goal that ties the story to the board.</p>
+          </div>
+          <div class="region r3">
+            <img src="assets/ss-bottle.webp" alt="" loading="lazy" width="84" height="82">
+            <h4 data-i18n="games.54">Sahara <small>routes 31–50</small></h4>
+            <p data-i18n="games.55">Items buried in sand, water bottles to collect, and a final stretch where a sandstorm swaps the move limit for a timer.</p>
+          </div>
+        </div>
+
+        <div class="screens">
+          <figure><img src="assets/ss-home.webp" alt="Solve Stop home screen for Route 10 with the hitchhiker and parrot" loading="lazy" data-zoom width="678" height="1034" data-i18n-alt="games.69.alt"><figcaption data-i18n="games.56">Home screen. The character's outfit updates with what you buy.</figcaption></figure>
+          <figure class="vid"><video src="assets/ss-gameplay.mp4" poster="assets/ss-gameplay-poster.webp" width="360" height="658" muted loop playsinline preload="metadata" aria-label="Gameplay animation of Solve Stop" data-i18n-aria="games.70.aria"></video><figcaption data-i18n="games.57">Mechanic walkthrough from the design document.</figcaption></figure>
+          <figure><img src="assets/ss-play2.webp" alt="Two gameplay screens with Rubis giving a hint" loading="lazy" data-zoom width="680" height="535" data-i18n-alt="games.71.alt"><figcaption data-i18n="games.58">Rubis gives hints in the gameplay screen.</figcaption></figure>
+        </div>
+
+        <div class="solve-meta">
+          <div><h4 data-i18n="games.59">Boosters</h4><p data-i18n="games.60"><img src="assets/ss-swap.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Swap two cells. <img src="assets/ss-steer.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Steering wheel shuffles the board. <img src="assets/ss-wheelboost.webp" alt="" class="ico" width="200" height="200" loading="lazy" decoding="async"> Wheel upgrades a whole row or column.</p></div>
+          <div><h4 data-i18n="games.61">Economy</h4><p data-i18n="games.62">Tickets work as lives, five at most, one back every 30 minutes. Diamonds continue a failed route. Mini puzzles on routes 10 and 14 cost no ticket.</p></div>
+          <div><h4 data-i18n="games.63">What I would add next</h4><p data-i18n="games.64">Replace regions with a real travel plan on an interactive map, and sell outfit variations through a pass. Familiar enough to learn in seconds, different enough to plan.</p></div>
+        </div>
+      </article>
     </section>
 
-    <section id="contact" class="contact section-pad reveal">
-      <div class="eyebrow">Let’s build something useful</div>
-      <h2>Enterprise systems, AI assisted workflows, decisions and human behavior.</h2>
-      <p>That intersection is where I do my best work, and where I am most curious about what comes next.</p>
-      <div class="contact-grid">
-        <a href="mailto:mkaanseckin@gmail.com"><small>Email</small><strong>mkaanseckin@gmail.com ↗</strong></a>
-        <a href="https://github.com/kaannsckin" target="_blank" rel="noreferrer"><small>GitHub</small><strong>@kaannsckin ↗</strong></a>
-        <a href="https://www.linkedin.com/in/murat-kaan-seckin/" target="_blank" rel="noreferrer"><small>LinkedIn</small><strong>Connect ↗</strong></a>
-        <div><small>Location</small><strong>Istanbul, Türkiye</strong></div>
+    <!-- ============ STOP 03 TEB ============ -->
+    <section class="stop" id="teb" style="--c:var(--blue)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="teb.1">Stop 03</span>
+        <h2 data-i18n="teb.2">STARS, a student network for a bank</h2>
+        <p class="stop-years" data-i18n="teb.3">TEB İcat Çıkar competition · 3rd place</p>
+      </header>
+      <div class="teb">
+        <div class="prose">
+          <p class="lede" data-i18n="teb.4">Most company programs only accept third and fourth-year students. I designed STARS to reach students earlier, in prep, first and second year, when a bank can still become part of their story.</p>
+          <p data-i18n="teb.5">STARs are selected students who represent TEB on campus, organise events and act as the bridge between students and the bank. In return they get support for their studies and direct access to people inside TEB.</p>
+        </div>
+        <ul class="pillars">
+          <li data-i18n="teb.6"><b>Competitions</b>Teams of STARs receive a budget and try to grow it legally, mentored by TEB interns. The same format later runs on campuses with STARs as mentors.</li>
+          <li data-i18n="teb.7"><b>Education</b>Book and study support, plus a summer school in software, project management, data analysis, economics and accounting.</li>
+          <li data-i18n="teb.8"><b>Campus events</b>Sponsorship for student clubs' concerts, theatre, case competitions and summits.</li>
+          <li data-i18n="teb.9"><b>Camps</b>Short trips for top STARs from different cities, with senior TEB managers joining.</li>
+          <li data-i18n="teb.10"><b>Visibility</b>STARs appear in TEB's own advertising, so students outside the program see how much the bank values it.</li>
+          <li data-i18n="teb.11"><b>Reverse mentoring</b>Mentoring goes both ways. STARs also work on real problems inside the bank and bring a younger view.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ STOP 04 STARBUCKS ============ -->
+    <section class="stop" id="starbucks" style="--c:var(--green)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="starbucks.1">Stop 04</span>
+        <h2 data-i18n="starbucks.2">Two Starbucks problems, one before the counter and one behind it</h2>
+        <p class="stop-years" data-i18n="starbucks.3">Stars for Starbucks program · Summer 2024</p>
+      </header>
+
+      <article class="sb">
+        <div class="sb-text">
+          <p class="kicker" data-i18n="starbucks.4">Project 1 · Filter coffee</p>
+          <h3 data-i18n="starbucks.5">Brew what will be drunk within the hour</h3>
+          <p data-i18n="starbucks.6">With the new refill campaign, filter coffee demand changed. Brewed coffee lives for one hour, and each machine has two urns that brew quarter, half or full batches. Brew too little and guests wait. Brew too much and it goes down the drain.</p>
+          <ol class="steps">
+            <li data-i18n="starbucks.7"><b>Forecast.</b> SARIMA demand per store in half-hour slots, by Tall, Grande and Venti, with adjustments for special days.</li>
+            <li data-i18n="starbucks.8"><b>Analyse.</b> A probabilistic inventory model converts demand into litres, a reorder point and safety stock.</li>
+            <li data-i18n="starbucks.9"><b>Model.</b> A desktop tool: pick country, region and store, then see the forecast, an hourly dashboard and graphs.</li>
+          </ol>
+          <p data-i18n="starbucks.10">The dashboard tells the barista which machine mode to run for the past, current and next hour. The same model could extend to food and to the "Live Order" system in development.</p>
+        </div>
+        <div class="sb-figs">
+          <figure class="big"><img src="assets/sb-dash.webp" alt="Hourly dashboard showing required coffee litres, Grande cups, machine mode, reorder point and safety stock for three hours" loading="lazy" data-zoom width="727" height="616" data-i18n-alt="starbucks.25.alt"><figcaption data-i18n="starbucks.11">Hourly dashboard: litres needed, machine mode, reorder point and safety stock.</figcaption></figure>
+          <figure><img src="assets/sb-graphs.webp" alt="Inventory level versus reorder point graphs and daily demand chart" loading="lazy" data-zoom width="734" height="555" data-i18n-alt="starbucks.26.alt"><figcaption data-i18n="starbucks.12">Inventory vs. reorder point, and daily demand.</figcaption></figure>
+          <figure><img src="assets/sb-forecast.webp" alt="Forecast table in half-hour slots for Tall, Grande and Venti" loading="lazy" data-zoom width="1057" height="690" data-i18n-alt="starbucks.27.alt"><figcaption data-i18n="starbucks.13">Forecast in half-hour slots by cup size.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="sb flip">
+        <div class="sb-text">
+          <p class="kicker" data-i18n="starbucks.14">Project 2 · Queue experience</p>
+          <h3 data-i18n="starbucks.15">Make the wait worth something</h3>
+          <p data-i18n="starbucks.16">At peak hours, guests wait. Queue optimisation can shorten the wait, but it cannot remove it. So the second idea changed what the wait feels like.</p>
+          <p data-i18n="starbucks.17"><b>Stars Game of the Day</b> is a short daily game inside the mobile app. After ordering, guests can play while their drink is prepared and earn Stars. It rewards mobile ordering, which also takes pressure off the counter.</p>
+          <div class="nums">
+            <div><b data-i18n="starbucks.18">148,215</b><span data-i18n="starbucks.19">average weekly CRM guests</span></div>
+            <div><b data-i18n="starbucks.20">53.5%</b><span data-i18n="starbucks.21">visit once a week</span></div>
+            <div><b data-i18n="starbucks.22">11,755</b><span data-i18n="starbucks.23">maximum Stars to distribute weekly</span></div>
+          </div>
+          <p class="note" data-i18n="starbucks.24">Stars budget based on the first seven months of 2024, assuming every mobile app guest plays.</p>
+        </div>
+        <div class="sb-figs phones">
+          <figure><img src="assets/sb-mobile.webp" alt="Mobile order screen: your order is preparing" loading="lazy" data-zoom width="458" height="946" data-i18n-alt="starbucks.28.alt"></figure>
+          <figure><img src="assets/sb-game.webp" alt="Stars Game of Today start screen" loading="lazy" data-zoom width="713" height="1086" data-i18n-alt="starbucks.29.alt"></figure>
+          <figure><img src="assets/sb-pay.webp" alt="Payment successful screen with Stars balance" loading="lazy" data-zoom width="450" height="893" data-i18n-alt="starbucks.30.alt"></figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ STOP 05 LABS ============ -->
+    <section class="stop" id="labs" style="--c:var(--violet)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="labs.1">Stop 05</span>
+        <h2 data-i18n="labs.2">Two products I started at university and kept building</h2>
+        <p class="stop-years" data-i18n="labs.3">Product line · Tapan and Lee</p>
+      </header>
+
+      <article class="tapan" id="tapan">
+        <div class="tapan-intro">
+          <img class="mark" src="assets/tapan-mark.webp" alt="Tapan logo" width="106" height="81" loading="lazy" data-i18n-alt="labs.30.alt">
+          <div>
+            <h3 data-i18n="labs.4">Tapan, a smart farming network</h3>
+            <p class="lede" data-i18n="labs.5">Farmers deal with missing know-how, middlemen who set low prices, unpredictable weather and a lonely profession. Tapan puts a social network, farm news, an AI farm assistant and a direct marketplace in one app.</p>
+          </div>
+        </div>
+
+        <div class="evolve">
+          <figure class="then">
+            <img src="assets/tapan-v1-screens.webp" alt="First Tapan concept screens: social feed, news, my farm, fields and marketplace" loading="lazy" data-zoom width="800" height="276" data-i18n-alt="labs.31.alt">
+            <figcaption data-i18n="labs.6"><b>The first concept.</b> Five tabs, inspired by the social apps farmers already use.</figcaption>
+          </figure>
+          <div class="arrow" aria-hidden="true"></div>
+          <figure class="now">
+            <div class="phone"><img src="assets/tapan-2026.webp" alt="Redesigned Tapan home screen: weather, farm pulse score 92, irrigation alert and plant doctor" loading="lazy" data-zoom width="367" height="752" data-i18n-alt="labs.32.alt"></div>
+            <figcaption data-i18n="labs.7"><span class="fig-tag">A spare-time experiment from my university years</span><b>The app design.</b> One home screen that tells the farmer what to do today, and why.</figcaption>
+          </figure>
+        </div>
+
+        <div class="tapan-grid">
+          <div><h4 data-i18n="labs.8">Social</h4><p data-i18n="labs.9">Posts, follows and a discover feed by interest and location. Farmers share problems, wins and practices such as heirloom seeds.</p></div>
+          <div><h4 data-i18n="labs.10">News</h4><p data-i18n="labs.11">Local farm news, ministry announcements, grants and global market updates, filtered by location and crop.</p></div>
+          <div><h4 data-i18n="labs.12">My Farm</h4><p data-i18n="labs.13">A project per field and a digital ID per animal: irrigation, fertiliser and spraying on a calendar, vaccine schedules and milk yield.</p></div>
+          <div><h4 data-i18n="labs.14">Market</h4><p data-i18n="labs.15">Direct listings with photos and video, AI price guidance, ratings, and a "smart farming product" badge for produce tracked in My Farm.</p></div>
+        </div>
+
+        <div class="roadmap">
+          <h4 data-i18n="labs.16">The assistant grows in four phases. Every suggestion explains its reason.</h4>
+          <ol>
+            <li data-i18n="labs.17"><b>Rules first</b>Weather APIs, crop calendars and regional soil guides give useful irrigation plans from day one.</li>
+            <li data-i18n="labs.18"><b>Learning</b>Yield, cost and sale data from each farmer turn general advice into field-specific advice.</li>
+            <li data-i18n="labs.19"><b>Vision</b>Photos of leaves and fruit flag likely diseases and pests early.</li>
+            <li data-i18n="labs.20"><b>Strategy</b>Years of data suggest the most profitable crop for next season.</li>
+          </ol>
+        </div>
+        <details class="more">
+          <summary data-i18n="labs.21">Logo exploration and the original flyer</summary>
+          <div class="more-grid">
+            <img src="assets/tapan-logos.webp" alt="Tapan logo variations" loading="lazy" data-zoom width="533" height="800" data-i18n-alt="labs.33.alt">
+            <img src="assets/tapan-flyer.webp" alt="Tapan flyer: smart and professional farming" loading="lazy" data-zoom width="497" height="702" data-i18n-alt="labs.34.alt">
+          </div>
+        </details>
+      </article>
+
+      <article class="lee" id="lee">
+        <div class="lee-text">
+          <h3 data-i18n="labs.22">Lee, a friend who grows when you move</h3>
+          <p class="lede" data-i18n="labs.23">An iOS companion fed by real activity. Apple HealthKit data turns steps, runs, strength work and recovery into care and energy for a character you get attached to.</p>
+          <p data-i18n="labs.24">The loop is simple. Move in real life, earn care, watch Lee grow, and come back because the relationship feels personal rather than because a streak is at risk.</p>
+          <label class="steps-slider">
+            <span data-i18n="labs.25">Walk with Lee</span>
+            <input type="range" id="leeSteps" min="0" max="12000" step="100" value="2400" aria-describedby="leeOut">
+            <output id="leeOut">2,400 steps</output>
+          </label>
+          <ul class="tags"><li data-i18n="labs.26">Swift</li><li data-i18n="labs.27">HealthKit</li><li data-i18n="labs.28">Supabase</li><li data-i18n="labs.29">AI layer</li></ul>
+        </div>
+        <div class="lee-phone">
+          <div class="phone dark">
+            <img src="assets/lee-onboarding.webp" alt="Lee onboarding screen: a friend who grows as you move" loading="lazy" width="383" height="730" data-i18n-alt="labs.35.alt">
+            <div class="egg" id="leeEgg" aria-hidden="true"><i></i><i></i><b></b></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ STOP 06 ABM ============ -->
+    <section class="stop" id="abm" style="--c:var(--blue)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="abm.1">Stop 06</span>
+        <h2 data-i18n="abm.2">Framing behaviour as a system</h2>
+        <p class="stop-years" data-i18n="abm.3">IE 588 Agent-Based Modelling and Simulation</p>
+      </header>
+      <p class="prose wide" data-i18n="abm.4">For the course I framed three modelling questions. In each one, the interesting result comes from many individuals reacting to each other, which is exactly where agent-based models beat averages.</p>
+      <div class="abm">
+        <div><h3 data-i18n="abm.5">Instagram boycotts</h3><p data-i18n="abm.6">How do boycott stories and different levels of social sensitivity change purchasing and brand perception?</p><small data-i18n="abm.7">Agents: users, influencers, brands</small></div>
+        <div><h3 data-i18n="abm.8">Library breaks</h3><p data-i18n="abm.9">How do break policies change seat availability, movement and perceived fairness?</p><small data-i18n="abm.10">Agents: students, staff</small></div>
+        <div><h3 data-i18n="abm.11">After an earthquake</h3><p data-i18n="abm.12">In Rumelihisarüstü, how do behaviour types, crowds and slopes affect who reaches an assembly area, and how fast?</p><small data-i18n="abm.13">Agents: followers, independents, confused residents</small></div>
+      </div>
+    </section>
+
+    <!-- ============ STOP 07 KUNDUZ ============ -->
+    <section class="stop kunduz" id="kunduz" style="--c:var(--blue)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="kunduz.1">Stop 07</span>
+        <h2 data-i18n="kunduz.2">What should a tutor be paid next hour?</h2>
+        <p class="stop-years" data-i18n="kunduz.3">Graduation project with Kunduz · Grade AA · with İbrahim Kantarcı and Zeynep Betül Özarslandan · advisor Aybek Korugan</p>
+      </header>
+
+      <div class="k-open">
+        <p class="lede" data-i18n="kunduz.4">Kunduz students photograph a question and get a solution. If the explanation is not enough, they tap "Contact tutor" and a follow-up chat opens. Demand for those follow-ups swings hour by hour, and tutor campaigns were priced by hand.</p>
+        <div class="nums">
+          <div><b data-i18n="kunduz.5">20M+</b><span data-i18n="kunduz.6">records analysed</span></div>
+          <div><b data-i18n="kunduz.7">0.85</b><span data-i18n="kunduz.8">R² on the test set</span></div>
+          <div><b data-i18n="kunduz.9">0.912</b><span data-i18n="kunduz.10">price elasticity of tutor supply</span></div>
+          <div><b data-i18n="kunduz.11">~95%</b><span data-i18n="kunduz.12">fulfilment at the suggested price</span></div>
+        </div>
+      </div>
+
+      <ol class="k-flow">
+        <li>
+          <div class="k-txt">
+            <h3 data-i18n="kunduz.13">The process</h3>
+            <p data-i18n="kunduz.14">A follow-up starts when the student is not satisfied. Kunduz creates it, a tutor picks it up and chats. If nobody closes the session, the system finalises it after 24 hours. Tutors can start, pause and resume active sessions.</p>
+            <p data-i18n="kunduz.15">The trade-off was clear: a higher fulfilment rate costs more. The goal was to decide how much tutor supply each hour needs, and at what price.</p>
+          </div>
+          <figure><img src="assets/kun-context.webp" alt="Swimlane context diagram with student, Kunduz and tutor lanes" loading="lazy" data-zoom width="1400" height="653" data-i18n-alt="kunduz.70.alt"><figcaption data-i18n="kunduz.16">Context diagram: student, Kunduz and tutor.</figcaption></figure>
+        </li>
+        <li>
+          <div class="k-txt">
+            <h3 data-i18n="kunduz.17">The data</h3>
+            <p data-i18n="kunduz.18">We focused on high school maths, the course with the most demand and the most anomalies. Hourly demand was classified into five density classes. The summer drop and the exam season peaks are clear.</p>
+          </div>
+          <figure><img src="assets/kun-classes.webp" alt="Demand density classes over time for maths, physics, Turkish and chemistry" loading="lazy" data-zoom width="1110" height="690" data-i18n-alt="kunduz.71.alt"><figcaption data-i18n="kunduz.19">Demand classes by course, 2023–2025.</figcaption></figure>
+        </li>
+        <li>
+          <div class="k-txt">
+            <h3 data-i18n="kunduz.20">Forecast the next hour</h3>
+            <p data-i18n="kunduz.21">An XGBoost model uses the previous hour, the same hour yesterday and last week, rolling extremes, and calendar signals. The previous hour carries more than half of the importance.</p>
+            <table class="scores">
+              <tr><th></th><th data-i18n="kunduz.22">R²</th><th data-i18n="kunduz.23">MAE</th><th data-i18n="kunduz.24">RMSE</th></tr>
+              <tr><th data-i18n="kunduz.25">Train</th><td data-i18n="kunduz.26">0.9118</td><td data-i18n="kunduz.27">10.54</td><td data-i18n="kunduz.28">16.13</td></tr>
+              <tr><th data-i18n="kunduz.29">Test</th><td data-i18n="kunduz.30">0.8475</td><td data-i18n="kunduz.31">11.05</td><td data-i18n="kunduz.32">16.99</td></tr>
+            </table>
+          </div>
+          <figure><img src="assets/kun-xgb.webp" alt="XGBoost feature importance: previous hour count dominates" loading="lazy" data-zoom width="1240" height="742" data-i18n-alt="kunduz.72.alt"><figcaption data-i18n="kunduz.33">Feature importance.</figcaption></figure>
+        </li>
+        <li>
+          <div class="k-txt">
+            <h3 data-i18n="kunduz.34">Three strategies, one choice</h3>
+            <div class="strat">
+              <p class="no" data-i18n="kunduz.35"><b>Dynamic categories and scheduling.</b> Needed category thresholds the company had not set, and more data than we had.</p>
+              <p class="no" data-i18n="kunduz.36"><b>Dynamic bonus.</b> Bonuses when load crosses a threshold. Tutors were not sensitive enough to bonuses, and their response was hard to predict.</p>
+              <p class="yes" data-i18n="kunduz.37"><b>Dynamic pricing.</b> One adaptive hourly price that merges base price and bonus, balancing cost and fulfilment, and fits the current system.</p>
+            </div>
+          </div>
+          <figure><img src="assets/kun-elastic.webp" alt="Scatter of log capacity change against relative price change with fitted line" loading="lazy" data-zoom width="1028" height="593" data-i18n-alt="kunduz.73.alt"><figcaption data-i18n="kunduz.38">Tutors respond to price: e ≈ 0.912.</figcaption></figure>
+        </li>
+        <li>
+          <div class="k-txt">
+            <h3 data-i18n="kunduz.39">Assumptions</h3>
+            <p data-i18n="kunduz.40"><b>M/M/c/c queue.</b> We could not extract a reneging rate from history, so M/M/c was out. With M/M/c/c, fulfilment is one minus the Erlang B blocking probability.</p>
+            <p data-i18n="kunduz.41"><b>Stable service time.</b> Service rate shifted once, in April 2024, then stayed steady.</p>
+            <p data-i18n="kunduz.42"><b>Price moves supply.</b> Next hour's tutors = C<sub>t</sub> · exp(e · (P<sub>t+1</sub> − P<sub>t</sub>) / P<sub>t</sub>).</p>
+          </div>
+          <figure><img src="assets/kun-service.webp" alt="Daily service rate over time with a level shift in April 2024" loading="lazy" data-zoom width="1400" height="581" data-i18n-alt="kunduz.74.alt"><figcaption data-i18n="kunduz.43">Service rate by date.</figcaption></figure>
+        </li>
+      </ol>
+
+      <div class="model">
+        <h3 data-i18n="kunduz.44">The model</h3>
+        <div class="eq">
+          <p class="obj" data-i18n="kunduz.45">min&nbsp; z = Fr<sub>t+1</sub> · P<sub>t+1</sub> + (1 − Fr<sub>t+1</sub>) · m</p>
+          <ul>
+            <li data-i18n="kunduz.46">P<sub>t+1</sub> · D̂<sub>t+1</sub> · Fr<sub>t+1</sub> ≤ B<sub>t+1</sub><span>budget</span></li>
+            <li data-i18n="kunduz.47">Fr<sub>t+1</sub> ≥ Fr<sub>target</sub><span>service level</span></li>
+            <li data-i18n="kunduz.48">Ĉ<sub>t+1</sub> = C<sub>t</sub> · exp(e · (P<sub>t+1</sub> − P<sub>t</sub>) / P<sub>t</sub>)<span>supply</span></li>
+            <li data-i18n="kunduz.49">Fr<sub>t+1</sub> = 1 − (r<sup>c</sup>/c!) / Σ<sub>k=0..c</sub> r<sup>k</sup>/k!<span>Erlang B, r = λ/μ</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SIMULATOR -->
+      <div class="sim" id="sim">
+        <div class="sim-controls">
+          <p class="kicker" data-i18n="kunduz.50">Live model</p>
+          <h3 data-i18n="kunduz.51">Price the next hour yourself</h3>
+          <p data-i18n="kunduz.52">This runs the same structure in your browser: forecast demand, current tutors and price go in, and it searches for the cheapest price that still meets the service target.</p>
+          <label><span data-i18n="kunduz.53">Forecast demand <output data-for="D"></output></span><input type="range" id="D" min="20" max="200" step="1" value="141"></label>
+          <label><span data-i18n="kunduz.54">Active tutors now <output data-for="C"></output></span><input type="range" id="C" min="5" max="60" step="1" value="30"></label>
+          <label><span data-i18n="kunduz.55">Current price <output data-for="P"></output></span><input type="range" id="P" min="1" max="6" step="0.05" value="3"></label>
+          <label><span data-i18n="kunduz.56">Penalty for an unmet request, m <output data-for="M"></output></span><input type="range" id="M" min="2" max="20" step="0.5" value="12"></label>
+          <label><span data-i18n="kunduz.57">Target fulfilment <output data-for="T"></output></span><input type="range" id="T" min="0.8" max="0.98" step="0.01" value="0.9"></label>
+          <p class="note" data-i18n="kunduz.58">Fixed: elasticity e = 0.912, service rate μ = 4 follow-ups per tutor-hour. Prices in TL per follow-up.</p>
+        </div>
+        <div class="sim-out">
+          <div class="sim-nums">
+            <div><span data-i18n="kunduz.59">Suggested price</span><b id="oP">–</b></div>
+            <div><span data-i18n="kunduz.60">Tutors next hour</span><b id="oC">–</b></div>
+            <div><span data-i18n="kunduz.61">Fulfilment</span><b id="oF">–</b></div>
+            <div><span data-i18n="kunduz.62">Total cost</span><b id="oZ">–</b></div>
+          </div>
+          <svg id="simChart" viewBox="0 0 560 300" role="img" aria-label="Total cost against price, with the optimal price marked" data-i18n-aria="kunduz.75.aria"></svg>
+          <p class="sim-cap" data-i18n="kunduz.63">The saw-tooth shape is real: tutors come in whole numbers, so each extra tutor makes the cost jump. Shaded prices miss the service target.</p>
+        </div>
+      </div>
+
+      <div class="k-results">
+        <h3 data-i18n="kunduz.64">What the model suggested</h3>
+        <div class="k-res-grid">
+          <figure><img src="assets/kun-output.webp" alt="Cost versus price curves for 1 November 2024 23:00 and 1 June 2024 22:00" loading="lazy" data-zoom width="1400" height="583" data-i18n-alt="kunduz.76.alt"><figcaption data-i18n="kunduz.65">A quiet night: 2.96 TL, 20 tutors, 95.6% fulfilment for about 60 requests. A busy night: 4.78 TL, 41 tutors, 95.3% for about 141.</figcaption></figure>
+          <figure><img src="assets/kun-chain.webp" alt="Three consecutive hourly optimisations" loading="lazy" data-zoom width="1400" height="447" data-i18n-alt="kunduz.77.alt"><figcaption data-i18n="kunduz.66">Hour by hour: 2.90, 3.13, then 2.46 TL. Each suggestion becomes the current price for the next hour.</figcaption></figure>
+        </div>
+        <div class="k-insight">
+          <h4 data-i18n="kunduz.67">What I would tell the next team</h4>
+          <p data-i18n="kunduz.68">The model works best in busy periods and in hourly steps. It uses a point forecast, so uncertainty in demand is not priced in yet. And the queue model tends to under-estimate the real fulfilment rate, which makes its prices conservative rather than risky.</p>
+          <figure><img src="assets/kun-error.webp" alt="Histogram of relative error between actual and calculated fulfilment rate" loading="lazy" data-zoom width="1400" height="695" data-i18n-alt="kunduz.78.alt"></figure>
+        </div>
+        <details class="more">
+          <summary data-i18n="kunduz.69">More charts: penalty sensitivity and a full day of estimates</summary>
+          <div class="more-grid">
+            <img src="assets/kun-penalty.webp" alt="Effect of penalty m on cost and optimal price across a day" loading="lazy" data-zoom width="1400" height="433" data-i18n-alt="kunduz.79.alt">
+            <img src="assets/kun-daily.webp" alt="Table of hourly estimates for 1 April 2024" loading="lazy" data-zoom width="1400" height="745" data-i18n-alt="kunduz.80.alt">
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ STOP 08 BORUSAN ============ -->
+    <section class="stop slim" id="borusan" style="--c:var(--green)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="borusan.1">Stop 08</span>
+        <h2 data-i18n="borusan.2">Seeing risk across the whole operation</h2>
+        <p class="stop-years" data-i18n="borusan.3">Borusan Cat · Internal Control Intern · Aug 2024 – Jul 2025</p>
+      </header>
+      <p class="prose wide" data-i18n="borusan.4">I monitored business units across five countries and ran risk analyses to support process improvement. It taught me to connect operational detail to the decisions above it, which is most of what project management is.</p>
+    </section>
+
+    <!-- ============ STOP 09 WORK ============ -->
+    <section class="stop" id="work" style="--c:var(--ink)">
+      <header class="stop-head">
+        <span class="stop-no" data-i18n="work.1">Stop 09</span>
+        <h2 data-i18n="work.2">Shipping in complex environments</h2>
+        <p class="stop-years" data-i18n="work.3">TÜBİTAK BİLGEM · Researcher, then Project Manager · since Aug 2025</p>
+      </header>
+
+      <div class="work">
+        <div class="prose">
+          <p class="lede" data-i18n="work.4">I joined as a candidate researcher in August 2025, became a researcher in December, and was promoted to project manager in January 2026. I manage a national secure enterprise messaging product and support project management for national defence messaging projects.</p>
+          <p data-i18n="work.5">I attended the NATO TIDE Sprint in Istanbul in May 2026, a multinational event on AI and digital transformation.</p>
+        </div>
+        <ol class="duties">
+          <li data-i18n="work.6">Scope and work breakdown</li>
+          <li data-i18n="work.7">Schedule, budget and resources</li>
+          <li data-i18n="work.8">Risks and dependencies</li>
+          <li data-i18n="work.9">Requirements and priorities</li>
+          <li data-i18n="work.10">Sprint and release planning</li>
+          <li data-i18n="work.11">Test to production handover</li>
+          <li data-i18n="work.12">Market research for the roadmap</li>
+        </ol>
+      </div>
+
+      <h3 class="sub" data-i18n="work.13">After hours, the workbench stays open</h3>
+      <p class="prose wide" data-i18n="work.14">GitHub is my garage, not my showroom. Some repositories solve recurring work problems. Others start with a simple question: what if we built this?</p>
+
+      <div class="quests">
+        <article class="quest">
+          <h4 data-i18n="work.15">PlanAsistan</h4>
+          <p data-i18n="work.16">A project, programme and portfolio workspace built around real planning pain: fuzzy PERT, capacity-aware scheduling, plan versus actual, baselines, risks and what-if scenarios.</p>
+          <ul class="tags"><li data-i18n="work.17">React 19</li><li data-i18n="work.18">TypeScript</li><li data-i18n="work.19">Supabase</li><li data-i18n="work.20">Jira / Excel</li></ul>
+          <a href="https://github.com/kaannsckin/pmasistance_mks" target="_blank" rel="noreferrer" data-i18n="work.21">View repository</a>
+        </article>
+        <article class="quest">
+          <h4 data-i18n="work.22">Mail test automation</h4>
+          <p data-i18n="work.23">Repeatable evidence for complex SMTP and IMAP delivery tests: scenario-based sending, MIME analysis, 2FA flows, live logs, HTML and CSV reports, and LLM-assisted findings.</p>
+          <ul class="tags"><li data-i18n="work.24">Python</li><li data-i18n="work.25">Flask</li><li data-i18n="work.26">SMTP / IMAP</li><li data-i18n="work.27">LLM</li></ul>
+          <a href="https://github.com/kaannsckin/mail-test-otomasyon" target="_blank" rel="noreferrer" data-i18n="work.28">View repository</a>
+        </article>
+        <article class="quest">
+          <h4 data-i18n="work.29">Decision labs</h4>
+          <p data-i18n="work.30">A DQN blackjack agent for risk-aware decisions, and Python experiments in inventory, supply contracts and production planning. Industrial engineering keeps showing up.</p>
+          <ul class="tags"><li data-i18n="work.31">Reinforcement learning</li><li data-i18n="work.32">Python</li></ul>
+        </article>
+      </div>
+
+      <article class="tiki" id="tiki">
+        <div class="tiki-text">
+          <p class="kicker" data-i18n="work.33">Side quest · Game line</p>
+          <h3 data-i18n="work.34">TikiTrivia</h3>
+          <p data-i18n="work.35">My friends and I kept playing the football quiz formats from YouTube, so I designed an app for them. A daily "Career Path" puzzle, ranked head-to-head duels, Football XOX, a Wordle-style FutLetters and leagues with ranks from Bronze to Legend.</p>
+          <p data-i18n="work.36">The design system: Archivo Black for headlines, Manrope for everything readable, a pitch-dark green base with lime, orange and gold.</p>
+        </div>
+
+        <div class="trivia" id="trivia" aria-live="polite">
+          <div class="tv-head"><b data-i18n="work.37">Kariyer İzi</b><span data-i18n="work.38">Bu futbolcu kim?</span><em id="tvLives">3 / 3</em></div>
+          <ol class="tv-path" id="tvPath"></ol>
+          <div class="tv-opts" id="tvOpts"></div>
+          <p class="tv-msg" id="tvMsg">Clubs appear one by one. Every wrong guess reveals the next.</p>
+        </div>
+
+        <figure class="tiki-sheet"><img src="assets/tiki-system.webp" alt="TikiTrivia design system and seven screens: home, career path, result card, ranked duel, football XOX, FutLetters and league" loading="lazy" data-zoom width="1355" height="777" data-i18n-alt="work.40.alt"><figcaption data-i18n="work.39">Design system and seven screens. Tap to zoom.</figcaption></figure>
+      </article>
+    </section>
+
+    <!-- ============ TERMINAL ============ -->
+    <section class="terminal" id="contact">
+      <div class="term-sign"><span class="roundel big" aria-hidden="true"></span><p data-i18n="contact.1">End of the line, for now</p></div>
+      <h2 data-i18n="contact.2">Enterprise systems, AI-assisted workflows, decisions and human behaviour.</h2>
+      <p data-i18n="contact.3">That intersection is where I do my best work. If you have a problem there, I would like to hear it.</p>
+      <div class="contact">
+        <a href="mailto:mkaanseckin@gmail.com" data-i18n="contact.4"><small>Email</small>mkaanseckin@gmail.com</a>
+        <a href="https://www.linkedin.com/in/murat-kaan-seckin/" target="_blank" rel="noreferrer" data-i18n="contact.5"><small>LinkedIn</small>murat-kaan-seckin</a>
+        <a href="https://github.com/kaannsckin" target="_blank" rel="noreferrer" data-i18n="contact.6"><small>GitHub</small>@kaannsckin</a>
+        <div data-i18n="contact.7"><small>Based in</small>Istanbul, Türkiye</div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>© 2026 Murat Kaan Seçkin</span>
-    <code>README_status: probably_final_v48_REAL</code>
-    <a href="#top">Back to top ↑</a>
+  <footer class="foot">
+    <span data-i18n="foot.1">© 2026 Murat Kaan Seçkin</span>
+    <span data-i18n="foot.2">Visuals are from my original project decks and designs.</span>
+    <a href="#top" data-i18n="foot.3">Back to the first stop</a>
   </footer>
+
+  <dialog class="zoom" id="zoom" aria-label="Enlarged image" data-i18n-aria="doc.44.aria">
+    <button type="button" class="zoom-x" aria-label="Close" data-i18n="doc.43" data-i18n-aria="doc.45.aria">×</button>
+    <img alt="">
+  </dialog>
+
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
