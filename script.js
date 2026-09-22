@@ -98,7 +98,6 @@
     img.tabIndex = 0;
     img.setAttribute('role', 'button');
     img.setAttribute('aria-haspopup', 'dialog');
-    if (img.alt) img.setAttribute('aria-label', img.alt + ' — enlarge');
     img.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); img.click(); }
     });
@@ -106,6 +105,96 @@
   // Send focus back to the thumbnail that opened the dialog.
   let zoomOpener = null;
   dlg.addEventListener('close', () => { if (zoomOpener) { zoomOpener.focus(); zoomOpener = null; } });
+  // The hint rides on the alt text, so it is rebuilt whenever the language changes.
+  const labelZoom = () => $$('[data-zoom]').forEach(img => {
+    if (img.alt) img.setAttribute('aria-label', img.alt + ' — ' + t('js.enlarge'));
+  });
+  onLangChange.push(labelZoom);
+
+  /* ---------- who I am: the world map ---------- */
+  const pdlg = $('#place');
+  if (pdlg) {
+    // Photos belong to a region; the two places I have not reached yet have none.
+    const PLACES = {
+      turkiye: ['niksar', 'tokat', 'bogazici', 'istanbul', 'kocaeli', 'ordu'],
+      usa: ['sandusky-1', 'sandusky-2', 'niagara-1', 'niagara-2', 'newyork', 'chicago'],
+      italy: ['roma', 'floransa', 'milano'],
+      germany: ['frankfurt', 'almanya'],
+      holland: ['amsterdam'],
+      uk: [],
+      vietnam: []
+    };
+    const LABEL = { turkiye: 'me.tr', usa: 'me.us', italy: 'me.it', germany: 'me.de', holland: 'me.nl', uk: 'me.uk', vietnam: 'me.vn' };
+    const pins = $$('.pin');
+    const pName = $('#placeName'), pText = $('#placeText'), pShots = $('#placeShots');
+    const scroller = $('.world-scroll');
+    let place = null, pinOpener = null;
+
+    function fillPlace() {
+      pins.forEach(g => g.setAttribute('aria-label', t(LABEL[g.dataset.place])));
+      if (!place) return;
+      pName.textContent = t(LABEL[place]);
+      pText.textContent = t('me.place.' + place);
+      // The photos are only fetched once a pin is opened.
+      pShots.replaceChildren(...PLACES[place].map(id => {
+        const img = new Image();
+        img.src = 'assets/me-' + id + '.webp';
+        img.alt = t('me.shot.' + id);
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        img.setAttribute('aria-label', img.alt + ' — ' + t('js.enlarge'));
+        const grow = () => {
+          img.classList.toggle('big');
+          if (img.classList.contains('big')) img.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+        };
+        img.addEventListener('click', grow);
+        img.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); grow(); }
+        });
+        return img;
+      }));
+    }
+    onLangChange.push(fillPlace);
+
+    // A narrow screen only shows a slice of the map, so start it in the middle.
+    if (scroller && scroller.scrollWidth > scroller.clientWidth) {
+      scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) / 2;
+    }
+
+    pins.forEach(g => {
+      g.setAttribute('tabindex', '0');
+      g.setAttribute('role', 'button');
+      g.setAttribute('aria-haspopup', 'dialog');
+      const open = () => {
+        place = g.dataset.place;
+        pinOpener = g;
+        pins.forEach(o => o.classList.toggle('on', o === g));
+        fillPlace();
+        // On a narrow screen the map is a scrolling strip: centre the pin in it.
+        if (scroller && scroller.scrollWidth > scroller.clientWidth) {
+          const vb = $('.worldmap').viewBox.baseVal;
+          const x = (+$('circle', g).getAttribute('cx') - vb.x) / vb.width;
+          scroller.scrollTo({ left: x * scroller.scrollWidth - scroller.clientWidth / 2, behavior: reduced ? 'auto' : 'smooth' });
+        }
+        if (pdlg.showModal) pdlg.showModal();
+      };
+      g.addEventListener('click', open);
+      g.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+      });
+    });
+
+    // Clicks land on the dialog itself only when they miss the card.
+    pdlg.addEventListener('click', e => {
+      if (e.target === pdlg || e.target.closest('.place-x')) pdlg.close();
+    });
+    pdlg.addEventListener('close', () => {
+      pins.forEach(o => o.classList.remove('on'));
+      if (pinOpener) { pinOpener.focus(); pinOpener = null; }
+    });
+  }
 
   /* ---------- play the walkthrough only while it is on screen ---------- */
   const vid = $('.screens video');

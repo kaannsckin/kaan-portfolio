@@ -215,11 +215,78 @@ async function keyboard(browser) {
   await ctx.close();
 }
 
+async function worldMap(browser) {
+  console.log('\nWho I am world map');
+  const { ctx, page, problems } = await newPage(browser, { width: 1400, height: 1000, colorScheme: 'light' });
+  await page.goto(BASE, { waitUntil: 'load' });
+  await page.waitForTimeout(800);
+
+  const places = await page.evaluate(() => [...document.querySelectorAll('.pin')].map(p => p.dataset.place));
+  check('every pin carries a place', places.length === 7 && places.every(Boolean), places.join(','));
+
+  // Open each pin in turn: the card must show a translated name, a translated
+  // line of text, and photos that actually load.
+  let shots = 0, bad = [];
+  for (const place of places) {
+    await page.locator(`.pin[data-place="${place}"]`).click();
+    await page.waitForTimeout(250);
+    const r = await page.evaluate(async () => {
+      const d = document.querySelector('#place');
+      const imgs = [...document.querySelectorAll('#placeShots img')];
+      await Promise.all(imgs.map(i => i.complete ? null : new Promise(res => { i.onload = i.onerror = res; })));
+      return {
+        open: d.open,
+        name: document.querySelector('#placeName').textContent,
+        text: document.querySelector('#placeText').textContent,
+        count: imgs.length,
+        broken: imgs.filter(i => !i.naturalWidth).map(i => i.getAttribute('src')),
+        noAlt: imgs.filter(i => !i.alt || i.alt.startsWith('me.')).length,
+      };
+    });
+    shots += r.count;
+    if (!r.open || !r.name || r.name.startsWith('me.') || !r.text || r.text.startsWith('me.') || r.broken.length || r.noAlt) {
+      bad.push(`${place}: ${JSON.stringify(r)}`);
+    }
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(150);
+  }
+  check('every pin opens a translated card with working photos', bad.length === 0, bad.join(' | '));
+  check('all 18 photos are reachable from the map', shots === 18, `${shots} shown`);
+
+  // Keyboard: Enter opens the card, Escape closes it and hands focus back.
+  await page.locator('.pin[data-place="italy"]').focus();
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(250);
+  check('Enter opens the place card', await page.evaluate(() => document.querySelector('#place').open));
+  await page.locator('#placeShots img').first().click();
+  await page.waitForTimeout(250);
+  check('a photo enlarges in place',
+    await page.evaluate(() => document.querySelector('#placeShots img').classList.contains('big')));
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(250);
+  check('Escape closes the card and focus returns to the pin',
+    await page.evaluate(() => !document.querySelector('#place').open
+      && document.activeElement.getAttribute('data-place') === 'italy'));
+
+  // The card is built at runtime, so it has to follow the language toggle.
+  await page.click('.lang'); await page.waitForTimeout(350);
+  await page.locator('.pin[data-place="usa"]').click();
+  await page.waitForTimeout(250);
+  const tr = await page.evaluate(() => ({
+    name: document.querySelector('#placeName').textContent,
+    alt: document.querySelector('#placeShots img').alt,
+  }));
+  check('the card follows the language toggle', tr.name === 'Amerika' && !/^me\./.test(tr.alt), JSON.stringify(tr));
+  check('world map run produced no console errors', problems.length === 0, problems.join(' | '));
+  await ctx.close();
+}
+
 const browser = await chromium.launch();
 await screenshotMatrix(browser);
 await simulator(browser);
 await game(browser);
 await keyboard(browser);
+await worldMap(browser);
 await browser.close();
 
 if (noise.size) {
