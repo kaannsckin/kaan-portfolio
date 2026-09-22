@@ -221,39 +221,77 @@ async function worldMap(browser) {
   await page.goto(BASE, { waitUntil: 'load' });
   await page.waitForTimeout(800);
 
-  const places = await page.evaluate(() => [...document.querySelectorAll('.pin')].map(p => p.dataset.place));
-  check('every pin carries a place', places.length === 7 && places.every(Boolean), places.join(','));
+  const shown = () => page.evaluate(() =>
+    [...document.querySelectorAll('.worldmap')].filter(m => !m.hasAttribute('hidden')).map(m => m.dataset.map));
+  const pinsOn = () => page.evaluate(() =>
+    [...document.querySelectorAll('.worldmap:not([hidden]) .pin')].map(p => p.dataset.place));
 
-  // Open each pin in turn: the card must show a translated name, a translated
-  // line of text, and photos that actually load.
-  let shots = 0, bad = [];
-  for (const place of places) {
-    await page.locator(`.pin[data-place="${place}"]`).click();
-    await page.waitForTimeout(250);
-    const r = await page.evaluate(async () => {
-      const d = document.querySelector('#place');
-      const imgs = [...document.querySelectorAll('#placeShots img')];
-      await Promise.all(imgs.map(i => i.complete ? null : new Promise(res => { i.onload = i.onerror = res; })));
-      return {
-        open: d.open,
-        name: document.querySelector('#placeName').textContent,
-        text: document.querySelector('#placeText').textContent,
-        count: imgs.length,
-        broken: imgs.filter(i => !i.naturalWidth).map(i => i.getAttribute('src')),
-        noAlt: imgs.filter(i => !i.alt || i.alt.startsWith('me.')).length,
-      };
-    });
-    shots += r.count;
-    if (!r.open || !r.name || r.name.startsWith('me.') || !r.text || r.text.startsWith('me.') || r.broken.length || r.noAlt) {
-      bad.push(`${place}: ${JSON.stringify(r)}`);
+  check('the world map is the one on show', (await shown()).join() === 'world');
+  const world = await pinsOn();
+  check('seven pins on the world map', world.length === 7, world.join(','));
+
+  // Every pin must sit on top at its own dot, or it cannot be tapped.
+  const covered = await page.evaluate(() => {
+    document.querySelector('.world-scroll').scrollIntoView({ block: 'center', behavior: 'instant' });
+    return [...document.querySelectorAll('.worldmap:not([hidden]) .pin')].filter(g => {
+      const b = g.querySelector('.dot').getBoundingClientRect();
+      return !g.contains(document.elementFromPoint(b.x + b.width / 2, b.y + b.height / 2));
+    }).map(g => g.dataset.place);
+  });
+  check('no pin is covered by its neighbour', covered.length === 0, covered.join(','));
+
+  // Opening a pin: a translated name, a translated line, photos that load.
+  let shots = 0;
+  const bad = [];
+  async function openPins(places) {
+    for (const place of places) {
+      await page.locator(`.pin[data-place="${place}"]`).click();
+      await page.waitForTimeout(250);
+      const r = await page.evaluate(async () => {
+        const imgs = [...document.querySelectorAll('#placeShots img')];
+        await Promise.all(imgs.map(i => i.complete ? null : new Promise(res => { i.onload = i.onerror = res; })));
+        return {
+          open: document.querySelector('#place').open,
+          name: document.querySelector('#placeName').textContent,
+          text: document.querySelector('#placeText').textContent,
+          count: imgs.length,
+          broken: imgs.filter(i => !i.naturalWidth).map(i => i.getAttribute('src')),
+          noAlt: imgs.filter(i => !i.alt || i.alt.startsWith('me.')).length,
+        };
+      });
+      shots += r.count;
+      if (!r.open || !r.name || r.name.startsWith('me.') || !r.text || r.text.startsWith('me.') || r.broken.length || r.noAlt) {
+        bad.push(`${place}: ${JSON.stringify(r)}`);
+      }
+      await page.keyboard.press('Escape');
+      await page.waitForTimeout(150);
     }
-    await page.keyboard.press('Escape');
-    await page.waitForTimeout(150);
+  }
+  await openPins(['italy', 'germany', 'holland', 'uk', 'vietnam']);
+
+  // Türkiye and the United States open a map of their own instead of a card.
+  for (const [country, cities] of [['turkiye', ['niksar', 'tokat', 'istanbul', 'kocaeli', 'ordu']],
+                                   ['usa', ['sandusky', 'niagara', 'newyork', 'chicago']]]) {
+    await page.locator(`.pin[data-place="${country}"]`).click();
+    await page.waitForTimeout(400);
+    check(`${country} opens its own map`, (await shown()).join() === country, (await shown()).join());
+    check(`${country} card stays shut`, !(await page.evaluate(() => document.querySelector('#place').open)));
+    const got = await pinsOn();
+    check(`${country} map carries its ${cities.length} pins`,
+      got.slice().sort().join() === cities.slice().sort().join(), got.join(','));
+    const hint = await page.evaluate(() => document.querySelector('#mapHint').textContent);
+    check(`${country} map shows its own line`, hint.length > 10 && !hint.includes('Tap a pin'), hint.slice(0, 40));
+    await openPins(cities);
+    await page.click('#mapBack');
+    await page.waitForTimeout(350);
+    check(`back returns to the world map with focus on ${country}`,
+      (await shown()).join() === 'world'
+      && await page.evaluate(c => document.activeElement.dataset.place === c, country));
   }
   check('every pin opens a translated card with working photos', bad.length === 0, bad.join(' | '));
-  check('all 18 photos are reachable from the map', shots === 18, `${shots} shown`);
+  check('all 18 photos are reachable from the maps', shots === 18, `${shots} shown`);
 
-  // Keyboard: Enter opens the card, Escape closes it and hands focus back.
+  // Keyboard: Enter opens, Escape closes and hands focus back; Escape again leaves the country map.
   await page.locator('.pin[data-place="italy"]').focus();
   await page.keyboard.press('Enter');
   await page.waitForTimeout(250);
@@ -268,15 +306,27 @@ async function worldMap(browser) {
     await page.evaluate(() => !document.querySelector('#place').open
       && document.activeElement.getAttribute('data-place') === 'italy'));
 
-  // The card is built at runtime, so it has to follow the language toggle.
-  await page.click('.lang'); await page.waitForTimeout(350);
   await page.locator('.pin[data-place="usa"]').click();
-  await page.waitForTimeout(250);
+  await page.waitForTimeout(350);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(350);
+  check('Escape steps back out of a country map', (await shown()).join() === 'world');
+
+  // Everything built at runtime has to follow the language toggle.
+  await page.click('.lang'); await page.waitForTimeout(350);
+  const hintTr = await page.evaluate(() => document.querySelector('#mapHint').textContent);
+  check('the hint follows the language toggle', hintTr.includes('nokta'), hintTr.slice(0, 40));
+  await page.locator('.pin[data-place="turkiye"]').click();
+  await page.waitForTimeout(350);
+  await page.locator('.pin[data-place="ordu"]').click();
+  await page.waitForTimeout(300);
   const tr = await page.evaluate(() => ({
     name: document.querySelector('#placeName').textContent,
+    text: document.querySelector('#placeText').textContent,
     alt: document.querySelector('#placeShots img').alt,
   }));
-  check('the card follows the language toggle', tr.name === 'Amerika' && !/^me\./.test(tr.alt), JSON.stringify(tr));
+  check('the card follows the language toggle',
+    tr.name === 'Ordu' && /yama/.test(tr.text) && !/^me\./.test(tr.alt), JSON.stringify(tr));
   check('world map run produced no console errors', problems.length === 0, problems.join(' | '));
   await ctx.close();
 }
