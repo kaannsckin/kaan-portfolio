@@ -221,14 +221,15 @@ details.more summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(
 .sb-figs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .sb-figs .big{grid-column:1/-1}
 .sb-figs img{border-radius:12px;border:1px solid var(--rule);width:100%;background:#fff}
-.sb-figs.phones{grid-template-columns:repeat(4,1fr);gap:10px;align-items:center}
-.sb-figs.phones figure:nth-child(even){transform:translateY(-24px)}
+.sb-figs.phones{grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+.sb-figs.phones figure:nth-child(even){transform:translateY(-18px)}
+/* The gameplay capture is only 210px wide; stretching it to the column just blurs it. */
+.sb-figs.phones img.native{max-width:210px;margin-inline:auto}
 .sb-figs.phones img{border:0;background:none}
 
 /* tapan */
 .tapan{background:var(--card);border:1px solid var(--rule);border-radius:28px;padding:clamp(20px,3vw,40px);margin-bottom:40px}
-.tapan-intro{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;margin-bottom:30px}
-.tapan-intro .mark{width:84px;height:auto;border-radius:18px;background:#FBFBF7}
+.tapan-intro{margin-bottom:30px}
 .tapan h3{font-size:clamp(30px,3.4vw,46px);margin-bottom:12px}
 .evolve{display:grid;grid-template-columns:1.5fr 60px .8fr;gap:18px;align-items:center;margin-bottom:34px}
 .evolve .then img{border-radius:14px;border:1px solid var(--rule);background:#fff}
@@ -452,8 +453,7 @@ input[type=range]{accent-color:var(--violet);width:100%}
   .contact{grid-template-columns:1fr}
   .steps-slider{grid-template-columns:1fr auto}
   .steps-slider span{grid-column:1/-1}
-  .tapan-intro{grid-template-columns:1fr}
-  .sb-figs.phones{grid-template-columns:1fr 1fr;gap:14px}
+  .sb-figs.phones{gap:14px}
   .tool-grid,.tool-notes,.pipe{grid-template-columns:1fr}
   .pipe li{padding-bottom:16px}
 }
