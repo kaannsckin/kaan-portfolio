@@ -114,26 +114,74 @@
   /* ---------- who I am: the world map ---------- */
   const pdlg = $('#place');
   if (pdlg) {
-    // Photos belong to a region; the two places I have not reached yet have none.
+    // Photos belong to a pin; the two places I have not reached yet have none.
     const PLACES = {
-      turkiye: ['niksar', 'tokat', 'bogazici', 'istanbul', 'kocaeli', 'ordu'],
-      usa: ['sandusky-1', 'sandusky-2', 'niagara-1', 'niagara-2', 'newyork', 'chicago'],
       italy: ['roma', 'floransa', 'milano'],
       germany: ['frankfurt', 'almanya'],
       holland: ['amsterdam'],
       uk: [],
-      vietnam: []
+      vietnam: [],
+      niksar: ['niksar'],
+      tokat: ['tokat'],
+      istanbul: ['bogazici', 'istanbul'],
+      kocaeli: ['kocaeli'],
+      ordu: ['ordu'],
+      sandusky: ['sandusky-1', 'sandusky-2'],
+      niagara: ['niagara-1', 'niagara-2'],
+      newyork: ['newyork'],
+      chicago: ['chicago']
     };
-    const LABEL = { turkiye: 'me.tr', usa: 'me.us', italy: 'me.it', germany: 'me.de', holland: 'me.nl', uk: 'me.uk', vietnam: 'me.vn' };
+    // Türkiye and the United States hold enough stops to earn a map of their own,
+    // so their pins open that map instead of a card.
+    const DRILL = ['turkiye', 'usa'];
+    const maps = {};
+    $$('.worldmap').forEach(m => { maps[m.dataset.map] = m; });
     const pins = $$('.pin');
+    const hintEl = $('#mapHint'), backBtn = $('#mapBack'), scroller = $('.world-scroll');
     const pName = $('#placeName'), pText = $('#placeText'), pShots = $('#placeShots');
-    const scroller = $('.world-scroll');
-    let place = null, pinOpener = null;
+    // A pin's label key is on the label itself, so the two cannot drift apart.
+    const keyOf = g => $('text', g).dataset.i18n;
+    let view = 'world', place = null, placeKey = null, pinOpener = null, drillOpener = null;
+
+    const dotsOf = m => [...m.querySelectorAll('.dot')].map(d => [+d.getAttribute('cx'), +d.getAttribute('cy')]);
+    // A narrow screen only shows a slice of a map, so start it where the pins are.
+    const centre = () => {
+      if (scroller.scrollWidth <= scroller.clientWidth) return;
+      const m = maps[view], vb = m.viewBox.baseVal, xs = dotsOf(m).map(p => p[0]);
+      const mid = (Math.min(...xs) + Math.max(...xs)) / 2;
+      scroller.scrollLeft = ((mid - vb.x) / vb.width) * scroller.scrollWidth - scroller.clientWidth / 2;
+    };
+    const centreOn = g => {
+      if (scroller.scrollWidth <= scroller.clientWidth) return;
+      const vb = maps[view].viewBox.baseVal;
+      const x = (+$('.dot', g).getAttribute('cx') - vb.x) / vb.width;
+      scroller.scrollTo({ left: x * scroller.scrollWidth - scroller.clientWidth / 2, behavior: reduced ? 'auto' : 'smooth' });
+    };
+    const setHint = () => {
+      // On a country map the country's own line stands in for the hint.
+      hintEl.textContent = view === 'world' ? t('me.maphint') : t('me.place.' + view);
+    };
+    function showMap(name) {
+      view = name;
+      for (const k in maps) {
+        // An SVG element has no hidden IDL property, so the attribute is set directly.
+        maps[k].toggleAttribute('hidden', k !== name);
+        maps[k].classList.remove('in');
+      }
+      if (!reduced) { void maps[name].offsetWidth; maps[name].classList.add('in'); }
+      backBtn.toggleAttribute('hidden', name === 'world');
+      setHint();
+      centre();
+    }
 
     function fillPlace() {
-      pins.forEach(g => g.setAttribute('aria-label', t(LABEL[g.dataset.place])));
+      setHint();
+      pins.forEach(g => {
+        const name = t(keyOf(g));
+        g.setAttribute('aria-label', DRILL.includes(g.dataset.place) ? name + ' — ' + t('me.opensmap') : name);
+      });
       if (!place) return;
-      pName.textContent = t(LABEL[place]);
+      pName.textContent = t(placeKey);
       pText.textContent = t('me.place.' + place);
       // The photos are only fetched once a pin is opened.
       pShots.replaceChildren(...PLACES[place].map(id => {
@@ -157,33 +205,54 @@
       }));
     }
     onLangChange.push(fillPlace);
+    centre();
 
-    // A narrow screen only shows a slice of the map, so start it in the middle.
-    if (scroller && scroller.scrollWidth > scroller.clientWidth) {
-      scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) / 2;
-    }
-
+    const NS = 'http://www.w3.org/2000/svg';
     pins.forEach(g => {
       g.setAttribute('tabindex', '0');
       g.setAttribute('role', 'button');
-      g.setAttribute('aria-haspopup', 'dialog');
+      // A 13-unit dot is about a 10px target on a phone, so each pin gets an
+      // invisible one as large as it can be without covering its neighbour.
+      const dot = $('.dot', g), hit = document.createElementNS(NS, 'circle');
+      const here = [+dot.getAttribute('cx'), +dot.getAttribute('cy')];
+      const near = dotsOf(g.ownerSVGElement)
+        .filter(p => p[0] !== here[0] || p[1] !== here[1])
+        .reduce((a, p) => Math.min(a, Math.hypot(p[0] - here[0], p[1] - here[1])), Infinity);
+      hit.setAttribute('class', 'hit');
+      hit.setAttribute('cx', here[0]);
+      hit.setAttribute('cy', here[1]);
+      hit.setAttribute('r', Math.min(16, Math.max(6, near / 2)).toFixed(1));
+      g.insertBefore(hit, g.firstChild);
+      const drills = DRILL.includes(g.dataset.place);
+      if (!drills) g.setAttribute('aria-haspopup', 'dialog');
       const open = () => {
+        if (drills) {
+          drillOpener = g;
+          showMap(g.dataset.place);
+          backBtn.focus();
+          return;
+        }
         place = g.dataset.place;
+        placeKey = keyOf(g);
         pinOpener = g;
         pins.forEach(o => o.classList.toggle('on', o === g));
         fillPlace();
-        // On a narrow screen the map is a scrolling strip: centre the pin in it.
-        if (scroller && scroller.scrollWidth > scroller.clientWidth) {
-          const vb = $('.worldmap').viewBox.baseVal;
-          const x = (+$('circle', g).getAttribute('cx') - vb.x) / vb.width;
-          scroller.scrollTo({ left: x * scroller.scrollWidth - scroller.clientWidth / 2, behavior: reduced ? 'auto' : 'smooth' });
-        }
+        centreOn(g);
         if (pdlg.showModal) pdlg.showModal();
       };
       g.addEventListener('click', open);
       g.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
       });
+    });
+
+    backBtn.addEventListener('click', () => {
+      showMap('world');
+      if (drillOpener) { drillOpener.focus(); drillOpener = null; }
+    });
+    // Escape steps back out of a country map, once no dialog is using it.
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && view !== 'world' && !$('dialog[open]')) backBtn.click();
     });
 
     // Clicks land on the dialog itself only when they miss the card.
