@@ -581,19 +581,71 @@
       <h3 class="sub" data-i18n="work.13">After hours, the workbench stays open</h3>
       <p class="prose wide" data-i18n="work.14">GitHub is my garage, not my showroom. Some repositories solve recurring work problems. Others start with a simple question: what if we built this?</p>
 
+      <article class="tool" id="planasistan">
+        <div class="tool-head">
+          <div>
+            <p class="kicker" data-i18n="pa.1">Side quest · the tool I use at work</p>
+            <h4 data-i18n="pa.2">PlanAsistan</h4>
+          </div>
+          <a class="repo" href="https://github.com/kaannsckin/pmasistance_mks" target="_blank" rel="noreferrer" data-i18n="pa.3">View repository</a>
+        </div>
+        <p class="lede" data-i18n="pa.4">Planning tools answer the questions they were designed for. Mine kept asking different ones: who is free next month, what this plan actually costs, and what breaks if we win the bid we just sent out.</p>
+        <p class="prose" data-i18n="pa.5">So I built the workspace I wanted. It holds a project's plan and a portfolio's people in the same place, and every number on the management screen traces back to a cell somebody typed.</p>
+
+        <div class="tool-grid">
+          <div><h5 data-i18n="pa.6">Planning</h5><p data-i18n="pa.7">Fuzzy PERT estimates feed a topological scheduler that respects due dates, capacity and the critical chain. What comes out lands on a sprint Kanban and a Gantt with the critical path drawn.</p></div>
+          <div><h5 data-i18n="pa.8">Allocation</h5><p data-i18n="pa.9">Man-months per person, project, work package, role and month, in plan, actual and comparison modes. Over-allocation is flagged per person-month, and once a plan is approved it locks: only actuals can be entered after that.</p></div>
+          <div><h5 data-i18n="pa.10">Portfolio</h5><p data-i18n="pa.11">A RAG status per project, a baseline captured the moment a plan is approved so drift is measurable, a 5×5 risk register, and capacity against demand by department and role with a hiring-gap indicator.</p></div>
+          <div><h5 data-i18n="pa.12">Forecast</h5><p data-i18n="pa.13">Moving average, linear trend, last month or plan — each turning actuals into a year-end estimate, a deviation from plan and an estimated cost, split by project, person or department.</p></div>
+        </div>
+
+        <figure class="tool-shot">
+          <img src="assets/plan-forecast.webp" alt="PlanAsistan forecast tab: method and window selectors, four summary cards with their figures covered, and a monthly workload chart where actuals become a dashed projection" width="1400" height="699" loading="lazy" decoding="async" data-zoom>
+          <figcaption data-i18n="pa.14">The forecast tab. Actuals run to the last closed month, then the line goes dashed. The project name and every figure are covered — those numbers belong to work.</figcaption>
+        </figure>
+
+        <div class="tool-notes">
+          <div><h5 data-i18n="pa.15">Getting real data in</h5><p data-i18n="pa.16">Two importers do the unglamorous part. Allocation spreadsheets come in as they are, and a Jira “Billed Hours” pivot is converted hours → days → man-months against the Turkish official working-day calendar. People and projects the import does not recognise are added to the data pool in one click, and cost and the management screen follow from there.</p></div>
+          <div><h5 data-i18n="pa.17">Who sees what</h5><p data-i18n="pa.18">Five roles. Manager roles cannot enter data and cannot open the screens meant for a project manager. Weekly notes and customer requests sit in a separate table that manager roles cannot read — enforced by a database policy rather than by hiding a button.</p></div>
+        </div>
+
+        <ul class="tags"><li data-i18n="pa.19">React 19</li><li data-i18n="pa.20">TypeScript</li><li data-i18n="pa.21">Supabase</li><li data-i18n="pa.22">PWA, offline-first</li><li data-i18n="pa.23">Excel / Jira</li><li data-i18n="pa.24">PowerPoint export</li></ul>
+      </article>
+
+      <article class="tool" id="mailtest">
+        <div class="tool-head">
+          <div>
+            <p class="kicker" data-i18n="mt.1">Side quest · the release chore</p>
+            <h4 data-i18n="mt.2">Mail test automation</h4>
+          </div>
+          <a class="repo" href="https://github.com/kaannsckin/mail-test-otomasyon" target="_blank" rel="noreferrer" data-i18n="mt.3">View repository</a>
+        </div>
+        <p class="lede" data-i18n="mt.4">On the product I manage, every release ended the same way. Someone opened a checklist and started sending mail by hand: from this server on that client, opened on another, checking whether the Turkish characters survived, whether the attachment opened, whether the reply chain held together.</p>
+        <p class="prose" data-i18n="mt.5">That checklist is 450 steps across 18 client-and-server combinations. It is exactly the kind of work that gets quietly shortened when a release is late, which is when you least want it shortened. So I built a harness that does the sending and the looking, and asks a model to judge what arrived.</p>
+
+        <div class="nums">
+          <div><b data-i18n="mt.6">18</b><span data-i18n="mt.7">client and server combinations</span></div>
+          <div><b data-i18n="mt.8">5</b><span data-i18n="mt.9">scenario types per combination</span></div>
+          <div><b data-i18n="mt.10">450</b><span data-i18n="mt.11">steps in the manual checklist</span></div>
+        </div>
+
+        <ol class="pipe">
+          <li><b data-i18n="mt.12">Read the checklist</b><span data-i18n="mt.13">The same CSV the manual run used, so the coverage argument does not change.</span></li>
+          <li><b data-i18n="mt.14">Send over SMTP</b><span data-i18n="mt.15">Four shapes: plain text with Turkish characters, an attachment, an inline image, and a reply into an existing thread.</span></li>
+          <li><b data-i18n="mt.16">Collect over IMAP</b><span data-i18n="mt.17">Poll until the message lands, then parse the raw MIME: headers, parts, attachments, inline images.</span></li>
+          <li><b data-i18n="mt.18">Ask a model</b><span data-i18n="mt.19">What was sent and what arrived go to an LLM with a checklist written for that scenario. It answers in JSON: passed, confidence, per-check detail, issues.</span></li>
+          <li><b data-i18n="mt.20">Write it down</b><span data-i18n="mt.21">An HTML report to read and a CSV to paste into a sheet.</span></li>
+        </ol>
+
+        <div class="tool-notes">
+          <div><h5 data-i18n="mt.22">Two-factor was the hard part</h5><p data-i18n="mt.23">Corporate mail servers are where this kind of automation usually dies. Four authentication methods are supported: password, app password, password plus TOTP, and one-time code only. A stored TOTP secret is generated fresh each run; without one, the web interface opens a prompt mid-run and waits for the code.</p></div>
+          <div><h5 data-i18n="mt.24">What it does not claim</h5><p data-i18n="mt.25">The signed-message scenario is skipped rather than faked — the infrastructure has no digital signature, so there is nothing to verify. And because the tool sends real mail, it needs a host that allows outbound SMTP. Most free platforms block it, so a diagnostics endpoint reports whether the ports are open before a run is wasted.</p></div>
+        </div>
+
+        <ul class="tags"><li data-i18n="mt.26">Python</li><li data-i18n="mt.27">Flask</li><li data-i18n="mt.28">SMTP / IMAP</li><li data-i18n="mt.29">TOTP / 2FA</li><li data-i18n="mt.30">Claude or Gemini</li><li data-i18n="mt.31">Docker</li></ul>
+      </article>
+
       <div class="quests">
-        <article class="quest">
-          <h4 data-i18n="work.15">PlanAsistan</h4>
-          <p data-i18n="work.16">A project, programme and portfolio workspace built around real planning pain: fuzzy PERT, capacity-aware scheduling, plan versus actual, baselines, risks and what-if scenarios.</p>
-          <ul class="tags"><li data-i18n="work.17">React 19</li><li data-i18n="work.18">TypeScript</li><li data-i18n="work.19">Supabase</li><li data-i18n="work.20">Jira / Excel</li></ul>
-          <a href="https://github.com/kaannsckin/pmasistance_mks" target="_blank" rel="noreferrer" data-i18n="work.21">View repository</a>
-        </article>
-        <article class="quest">
-          <h4 data-i18n="work.22">Mail test automation</h4>
-          <p data-i18n="work.23">Repeatable evidence for complex SMTP and IMAP delivery tests: scenario-based sending, MIME analysis, 2FA flows, live logs, HTML and CSV reports, and LLM-assisted findings.</p>
-          <ul class="tags"><li data-i18n="work.24">Python</li><li data-i18n="work.25">Flask</li><li data-i18n="work.26">SMTP / IMAP</li><li data-i18n="work.27">LLM</li></ul>
-          <a href="https://github.com/kaannsckin/mail-test-otomasyon" target="_blank" rel="noreferrer" data-i18n="work.28">View repository</a>
-        </article>
         <article class="quest">
           <h4 data-i18n="work.29">Decision labs</h4>
           <p data-i18n="work.30">A DQN blackjack agent for risk-aware decisions, and Python experiments in inventory, supply contracts and production planning. Industrial engineering keeps showing up.</p>

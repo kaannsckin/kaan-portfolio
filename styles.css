@@ -23,7 +23,7 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavio
 body{margin:0;background:var(--paper);color:var(--text);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{max-width:100%;height:auto;display:block}
 a{color:inherit}
-h1,h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;line-height:1.08;font-weight:800;letter-spacing:-.02em}
+h1,h2,h3,h4,h5{font-family:var(--display);color:var(--ink);margin:0;line-height:1.08;font-weight:800;letter-spacing:-.02em}
 p{margin:0 0 1em}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
 .skip{position:fixed;left:12px;top:-80px;z-index:99;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:8px}
@@ -337,7 +337,31 @@ input[type=range]{accent-color:var(--violet);width:100%}
 .duties li{position:relative;padding:8px 0 8px 26px;font-weight:600;color:var(--ink)}
 .duties li::before{content:"";position:absolute;left:-17px;top:13px;width:16px;height:16px;border-radius:50%;background:var(--card);border:4px solid var(--ink)}
 .sub{font-size:clamp(28px,3vw,40px);margin-bottom:12px}
-.quests{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:60px}
+.quests{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:60px}
+.tool{background:var(--card);border:1px solid var(--rule);border-radius:28px;padding:clamp(20px,3vw,40px);margin-bottom:28px}
+.tool-head{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.tool-head h4{font-size:clamp(30px,3.4vw,46px)}
+.repo{flex:none;display:inline-flex;align-items:center;padding:9px 16px;border-radius:99px;border:2px solid var(--ink);text-decoration:none;font-weight:600;font-size:14px;color:var(--ink)}
+.repo:hover{background:var(--ink);color:var(--card)}
+.tool>.lede{max-width:64ch}
+.tool>.prose{margin-bottom:26px}
+.tool-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.tool-grid div{border-top:5px solid var(--c);padding-top:12px}
+.tool-grid h5{font-size:19px;margin-bottom:6px}
+.tool-grid p{font-size:15px;margin:0}
+.tool-shot{margin-bottom:26px}
+.tool-shot img{width:100%;border-radius:14px;border:1px solid var(--rule)}
+.tool-notes{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--rule);padding-top:22px}
+.tool-notes h5{font-size:19px;margin-bottom:6px}
+.tool-notes p{font-size:15px;margin:0}
+.tool .nums{margin:6px 0 28px}
+.pipe{list-style:none;counter-reset:st;display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:0 0 28px;padding:0}
+.pipe li{counter-increment:st;position:relative;padding:34px 14px 0 0;font-size:15px}
+.pipe li::before{content:counter(st);position:absolute;top:0;left:0;width:26px;height:26px;border-radius:50%;background:var(--card);border:4px solid var(--c);font:800 12px/18px var(--display);text-align:center;color:var(--ink);z-index:1}
+.pipe li::after{content:"";position:absolute;top:11px;left:0;right:0;height:5px;background:var(--c);opacity:.35}
+.pipe li:last-child::after{right:14px}
+.pipe b{display:block;color:var(--ink);font-family:var(--display);font-size:17px;margin-bottom:2px}
+.pipe span{color:var(--muted)}
 .quest{background:var(--card);border:1px solid var(--rule);border-radius:var(--r);padding:22px;display:flex;flex-direction:column}
 .quest h4{font-size:22px;margin-bottom:8px}
 .quest p{font-size:15px;flex:1}
@@ -398,6 +422,9 @@ input[type=range]{accent-color:var(--violet);width:100%}
   .tapan-grid,.roadmap ol{grid-template-columns:1fr 1fr}
   .roadmap li{padding-bottom:18px}
   .quests,.abm,.regions,.solve-meta{grid-template-columns:1fr}
+  .tool-grid{grid-template-columns:1fr 1fr}
+  .pipe{grid-template-columns:1fr 1fr 1fr}
+  .pipe li{padding-bottom:18px}
   .screens{grid-template-columns:1fr 1fr}
   .screens figure:last-child{grid-column:1/-1}
   .contact{grid-template-columns:1fr 1fr}
@@ -426,6 +453,8 @@ input[type=range]{accent-color:var(--violet);width:100%}
   .steps-slider{grid-template-columns:1fr auto}
   .steps-slider span{grid-column:1/-1}
   .tapan-intro{grid-template-columns:1fr}
+  .tool-grid,.tool-notes,.pipe{grid-template-columns:1fr}
+  .pipe li{padding-bottom:16px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

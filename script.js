@@ -30,18 +30,25 @@
     return v;
   };
   const langBtn = $('.lang');
+  let rewritten = false;
   function applyLang() {
     root.lang = lang;
     document.title = t('js.title');
     const d = $('meta[name="description"]'); if (d) d.setAttribute('content', t('js.desc'));
-    $$('[data-i18n]').forEach(el => {
-      const v = t(el.dataset.i18n);
-      // SVG text nodes take plain text; everything else may carry inline markup.
-      if (el.namespaceURI === 'http://www.w3.org/2000/svg') el.textContent = v;
-      else el.innerHTML = v;
-    });
-    $$('[data-i18n-alt]').forEach(el => el.setAttribute('alt', t(el.dataset.i18nAlt)));
-    $$('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
+    // The served markup already carries the English copy, so the first paint in
+    // English needs no DOM pass at all. Any other case rewrites and from then on
+    // the DOM no longer matches the source, so every later pass has to run.
+    if (rewritten || lang !== 'en') {
+      $$('[data-i18n]').forEach(el => {
+        const v = t(el.dataset.i18n);
+        // SVG text nodes take plain text; everything else may carry inline markup.
+        if (el.namespaceURI === 'http://www.w3.org/2000/svg') el.textContent = v;
+        else el.innerHTML = v;
+      });
+      $$('[data-i18n-alt]').forEach(el => el.setAttribute('alt', t(el.dataset.i18nAlt)));
+      $$('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
+      rewritten = true;
+    }
     if (langBtn) langBtn.firstElementChild.textContent = t('js.langCode');
     onLangChange.forEach(fn => fn());
   }
