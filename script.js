@@ -320,15 +320,17 @@
   onLangChange.push(leeRun);
 
   /* ---------- TikiTrivia career path ---------- */
+  // Clubs he actually appeared for, in order. The 2000–2002 Parma registration
+  // is left out: he was loaned out throughout and never played a match there.
   const PATH = [
-    ['2005–2011', 'Galatasaray'],
-    ['2011–2015', 'Atlético Madrid'],
-    ['2015–2020', 'Barcelona'],
-    ['2018–2020', 'Başakşehir (loan)'],
-    ['2020–2022', 'Galatasaray']
+    ['1995–1997', 'Coritiba'],
+    ['1997–2000', 'Palmeiras'],
+    ['2002–2004', 'Cruzeiro'],
+    ['2004–2012', 'Fenerbahçe'],
+    ['2013–2014', 'Coritiba']
   ];
-  const OPTS = ['Hakan Çalhanoğlu', 'Arda Turan', 'Burak Yılmaz', 'Selçuk İnan'];
-  const ANSWER = 'Arda Turan';
+  const OPTS = ['Roberto Carlos', 'Alex de Souza', 'Deivid', 'Diego Lugano'];
+  const ANSWER = 'Alex de Souza';
   let shown = 2, lives = 3, done = false, tvState = { key: 'js.tvIntro' };
   const pathEl = $('#tvPath'), optsEl = $('#tvOpts');
   function drawPath() {

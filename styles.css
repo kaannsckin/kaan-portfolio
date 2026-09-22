@@ -221,8 +221,8 @@ details.more summary{cursor:pointer;padding:16px 20px;font-weight:600;color:var(
 .sb-figs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .sb-figs .big{grid-column:1/-1}
 .sb-figs img{border-radius:12px;border:1px solid var(--rule);width:100%;background:#fff}
-.sb-figs.phones{grid-template-columns:repeat(3,1fr);align-items:center}
-.sb-figs.phones figure:nth-child(2){transform:translateY(-24px)}
+.sb-figs.phones{grid-template-columns:repeat(4,1fr);gap:10px;align-items:center}
+.sb-figs.phones figure:nth-child(even){transform:translateY(-24px)}
 .sb-figs.phones img{border:0;background:none}
 
 /* tapan */
@@ -453,6 +453,7 @@ input[type=range]{accent-color:var(--violet);width:100%}
   .steps-slider{grid-template-columns:1fr auto}
   .steps-slider span{grid-column:1/-1}
   .tapan-intro{grid-template-columns:1fr}
+  .sb-figs.phones{grid-template-columns:1fr 1fr;gap:14px}
   .tool-grid,.tool-notes,.pipe{grid-template-columns:1fr}
   .pipe li{padding-bottom:16px}
 }
